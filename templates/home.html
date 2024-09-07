@@ -1,0 +1,2472 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SteamDB</title>
+
+<link rel="preload" href="https://steamdb.info/static/fonts/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://steamdb.info/static/fonts/Inter-Bold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://steamdb.info/static/fonts/Inter-Italic.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/css/headcrab.css">
+<link rel="stylesheet" href="/static/css/index.css">
+
+<link rel="alternate" type="application/rss+xml" title="SteamDB Blog" href="https://steamdb.info/api/BlogRSS/">
+
+<link rel="canonical" href="https://steamdb.info/">
+
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content="@SteamDB">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SteamDB">
+<meta property="og:title" content="SteamDB">
+
+<meta name="description" content="SteamDB is a database of everything on Steam.">
+<meta property="og:description" content="SteamDB is a database of everything on Steam.">
+
+<meta property="og:image" content="https://steamdb.info/static/logos/512px.png">
+<link rel="image_src" href="https://steamdb.info/static/logos/512px.png">
+
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="/steamdb.webmanifest">
+<link rel="icon" type="image/svg+xml" href="https://steamdb.info/static/logos/vector_prefers_schema.svg">
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="SteamDB">
+<link rel="preconnect" href="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/">
+</head>
+<body class="page-home" itemscope itemtype="http://schema.org/WebSite" data-steam-cdn="https://cdn.cloudflare.steamstatic.com/" data-store-assets="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/" data-rev="934b1eee54">
+<a class="skip-main" href="#main" id="js-skip-main">Skip to content</a>
+<div class="header" role="banner">
+<div class="header-menu-button-container">
+<button type="button" class="header-menu-button" id="js-header-hamburger" accesskey="m" aria-label="Toggle menu"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-three-bars" aria-hidden="true"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path></svg> <span>Menu</span></button>
+
+</div>
+<div class="header-navbar">
+<a href="/" class="header-brand" itemprop="url"><svg width="30" height="30" viewBox="0 0 128 128" class="octicon octicon-steamdb" aria-hidden="true"><path fill-rule="evenodd" d="M63.9 0C30.5 0 3.1 11.9.1 27.1l35.6 6.7c2.9-.9 6.2-1.3 9.6-1.3l16.7-10c-.2-2.5 1.3-5.1 4.7-7.2 4.8-3.1 12.3-4.8 19.9-4.8 5.2-.1 10.5.7 15 2.2 11.2 3.8 13.7 11.1 5.7 16.3-5.1 3.3-13.3 5-21.4 4.8l-22 7.9c-.2 1.6-1.3 3.1-3.4 4.5-5.9 3.8-17.4 4.7-25.6 1.9-3.6-1.2-6-3-7-4.8L2.5 38.4c2.3 3.6 6 6.9 10.8 9.8C5 53 0 59 0 65.5c0 6.4 4.8 12.3 12.9 17.1C4.8 87.3 0 93.2 0 99.6 0 115.3 28.6 128 64 128c35.3 0 64-12.7 64-28.4 0-6.4-4.8-12.3-12.9-17 8.1-4.8 12.9-10.7 12.9-17.1 0-6.5-5-12.6-13.4-17.4 8.3-5.1 13.3-11.4 13.3-18.2 0-16.5-28.7-29.9-64-29.9zm22.8 14.2c-5.2.1-10.2 1.2-13.4 3.3-5.5 3.6-3.8 8.5 3.8 11.1 7.6 2.6 18.1 1.8 23.6-1.8s3.8-8.5-3.8-11c-3.1-1-6.7-1.5-10.2-1.5zm.3 1.7c7.4 0 13.3 2.8 13.3 6.2 0 3.4-5.9 6.2-13.3 6.2s-13.3-2.8-13.3-6.2c0-3.4 5.9-6.2 13.3-6.2zM45.3 34.4c-1.6.1-3.1.2-4.6.4l9.1 1.7a10.8 5 0 1 1-8.1 9.3l-8.9-1.7c1 .9 2.4 1.7 4.3 2.4 6.4 2.2 15.4 1.5 20-1.5s3.2-7.2-3.2-9.3c-2.6-.9-5.7-1.3-8.6-1.3zM109 51v9.3c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-9.2c11.5 5.3 27.4 8.6 44.9 8.6 17.6 0 33.6-3.3 45.2-8.7zm0 34.6v8.8c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-8.8c11.6 5.1 27.4 8.2 45 8.2s33.5-3.1 45-8.2z"/></svg> <span>SteamDB</span></a>
+<form class="header-search" id="js-header-form" method="get" action="/search/" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" role="search">
+
+<input type="hidden" name="a" value="all">
+<meta itemprop="target" content="https://steamdb.info/search/?a=all&amp;q={q}">
+
+<input type="text" accesskey="/" class="field" autocomplete="off" name="q" placeholder="Search…" itemprop="query-input" aria-label="Search">
+<button type="submit" class="submit" aria-label="Perform search" tabindex="-1"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button>
+</form>
+<a href="/sales/">Sales</a>
+<a href="/charts/">Charts</a>
+<a href="/calculator/">Calculator</a>
+<a href="/calendar/">Calendar</a>
+<a href="/patchnotes/">Patches</a>
+<a href="/discord/">Discord</a>
+<a href="/instantsearch/">Find games</a>
+<button type="button" class="btn btn-outline header-search-close">Close</button>
+</div>
+<button type="button" class="header-search-mobile" aria-label="Open search"><svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button>
+<div class="header-user hide-small">
+
+<a class="header-login" href="/login/" rel="nofollow">
+<svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg> <span>Sign in</span>
+</a>
+
+</div>
+</div>
+<div class="header-search-suggestions">
+<div class="container" id="js-search-tips" data-a="94HE6YATEI" data-k="YzhlNWM1YTg3ZTdmMmI3NzMwNDMwMTRjYzQ0ZjNiMWYwNzMxOTE1MjEyYWMyZmQzNDhhNjEzMDAzMzNlM2FiMXZhbGlkVW50aWw9MTcyNjI1NDYyNyZ1c2VyVG9rZW49MGQ4MTU5MDE4ZDc2NTMxYWNjMjNlNTBjODdmNzgwNjU=">
+<p>Start typing to see game suggestions. This only suggests apps that have a store page.</p>
+<ul>
+<li class="hide-small">Use slash key (<kbd>/</kbd>) to focus search from anywhere.</li>
+<li class="hide-small">Use arrow keys (<kbd>↑</kbd> and <kbd>↓</kbd>) to navigate suggestions.</li>
+<li class="hide-small">Use escape (<kbd>Esc</kbd>) to close search.</li>
+<li>Enter an appid to be redirected to the app page.</li>
+<li>Enter a steamid (765...) to be redirected to calculator.</li>
+<li>Paste a profile link (/id/ or /profiles/) to be redirected to calculator.</li>
+<li>Paste any url that contains app/, sub/, bundle/, or depot/ to be redirected to the relevant page.</li>
+<li><a href="https://www.algolia.com/?utm_content=steamdb.info&amp;utm_campaign=poweredby">Search is powered by Algolia.</a></li>
+</ul>
+</div>
+<div class="container header-search-enter hide-small">
+<kbd>Enter</kbd> Submit to view all results.
+<kbd>Ctrl+Enter</kbd> View and filter in instant search.
+</div>
+<div class="container" id="js-search-suggestions"></div>
+<div class="header-search-side-close">
+<div class="header-search-side-close-inner">Close &times;</div>
+</div>
+</div>
+<div class="header-menu-container" hidden>
+<div class="header-menu" tabindex="0">
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-info" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> About</li>
+
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/discord/">Discord</a></li>
+<li><a href="/discord/bot/">Discord Bot</a></li>
+<li><a href="/faq/">FAQ &amp; help</a></li>
+<li><a href="/donate/">Donate &amp; contribute</a></li>
+<li><a href="/extension/">Browser extension</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg> Tools</li>
+<li><a href="/sales/">Sales</a></li>
+<li><a href="/charts/">Charts</a></li>
+<li><a href="/calculator/">Calculator</a></li>
+<li><a href="/patchnotes/">Patch notes</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/instantsearch/">Instant search</a></li>
+<li><a href="/sales/history/">When is next sale?</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg> Tracking</li>
+<li><a href="/bundles/">Bundles</a></li>
+<li><a href="/history/">History</a></li>
+<li><a href="/pricechanges/">Price changes</a></li>
+<li><a href="/upcoming/free/">Free promotions</a></li>
+<li><a href="/tech/">Engines &amp; technologies</a></li>
+<li><a href="/stats/releases/">Game releases by year</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-database" aria-hidden="true"><path d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0c1.805 0 3.475.32 4.722.869.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Zm0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742 1.647 0 3.102-.295 4.117-.742.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869-1.805 0-3.475-.32-4.721-.869a6.327 6.327 0 0 1-.779-.406Z"></path></svg> Database</li>
+<li><a href="/tags/">Game tags</a></li>
+<li><a href="/calendar/">Release calendar</a></li>
+<li><a href="/upcoming/">Upcoming releases</a></li>
+<li><a href="/upcoming/mostfollowed/">Most followed upcoming</a></li>
+<li><a href="/badges/">Profile badges</a></li>
+<li><a href="/developers/">Developers</a></li>
+<li><a href="/publishers/">Publishers</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-number" aria-hidden="true"><path d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z"></path></svg> Rankings</li>
+<li><a href="/stats/gameratings/">Top rated games</a></li>
+<li><a href="/badge/13/">Top game owners</a></li>
+<li><a href="/stats/toplevels/">Top profile levels</a></li>
+<li><a href="/stats/globaltopsellers/">Top selling games</a></li>
+<li><a href="/topsellers/">Top selling games last week</a></li>
+<li><a href="/stats/mostfollowed/">Most followed games</a></li>
+<li><a href="/stats/mostwished/">Most wishlisted games</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-person" aria-hidden="true"><path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg> Account</li>
+
+<li><a href="/login/" rel="nofollow">Sign in via Steam</a></li>
+<li><a href="/freepackages/">Free packages</a></li>
+
+<li>&nbsp;</li>
+<li><a href="https://steamstat.us/">Steam Status</a></li>
+<li><a href="https://steamapi.xpaw.me/">Steam Web API</a></li>
+</ul>
+<div class="header-disclaimer">SteamDB is a hobby project and is not affiliated with Valve or Steam.<br>All times on the site are UTC.</div>
+<div class="header-kbd hide-small"><kbd>M</kbd> toggle this menu <kbd>/</kbd> focus search</div>
+</div>
+</div>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-H5qRdVHRPKUmp1rZ8srGU82Myz2MYPq76tNHfS5SquhE9NPwg0/wv3hZS+4YXIFvOVvR0Hsr1mg7awAXvb9rxg==" src="https://steamdb.info/static/js/hover.js?v=1f9a917551d13ca5" defer></script>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-1ybGGSXu45WDVLpQVF82WqtnS2bxLx/FPHJTns9Vs3s6fB+Z9IRphuQHYGo6iv2bFbVXVRuQ2xNJLdKPOMw+bw==" src="https://steamdb.info/static/js/toast.js?v=d726c61925eee395" defer></script>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-54Asi0fh+BQyjP2G5y135RRYrHtTIQJ8JG8I2hH/RB/PR76OwQKfCMave0EwftDgsk8ol/qmj/Q2phGg8kxf9A==" src="https://steamdb.info/static/js/footer.js?v=e7802c8b47e1f814" defer></script>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-82tBKeD/k15moCcZepbuH1tKodABgYwo25ZSM3ip+z88vUbBi1VqAanXa1DtNcgaRnvrHVyM+oMXc4naL3NQaA==" src="https://steamdb.info/static/js/global.js?v=f36b4129e0ff935e"></script>
+
+<div class="body-wrap">
+
+<div class="body-content" id="main"><script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-NO/kzezYPc6pX1+rDDDJgiCLhhmbRbQLssWh5jKQtPZM8KPQYaYferewqcWPr89dA9ucrJKBwl0KudwyempSnQ==" src="https://steamdb.info/static/js/vendor/diff_match_patch.js?v=34efe4cdecd83dce" defer></script>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-Wt3zAAvTTCK3S5cTqlXVoBZrc8chw2JycJJt3hDGkMhtYohGVBsMHb8j2XFt1pU0OonfRrAoZqOn3WBmambHjw==" src="https://steamdb.info/static/js/index.js?v=5addf3000bd34c22" defer></script>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" integrity="sha512-1p702K57JMI5FU584TGsWXgR4A7dgrtZvw20TSXNL2Y3dOgsGFYv6hGzpzYgayenK6Ph2QlX0rMj23kraPA7TA==" src="https://steamdb.info/static/js/timeago.js?v=d69ef4d8ae7b24c2"></script>
+
+<div class="container container-hello">
+<h1 class="header-title">Database of everything on Steam.</h1>
+<div>
+<p>This third-party website gives you better insight into the <a href="https://store.steampowered.com/">Steam</a> platform and everything in its database.</p>
+<p><a href="/faq/" title="Frequently Asked Questions">Look through our frequently asked questions</a> to learn more about SteamDB, <a href="/discord/">join our Discord</a>.</p>
+</div>
+</div>
+<div class="container container-products">
+<div class="row">
+<div class="span6">
+<table class="table-products table-hover">
+<colgroup>
+<col style="width:119px">
+<col>
+<col style="width:120px">
+<col style="width:100px">
+</colgroup>
+<thead>
+<tr>
+<th class="table-title" colspan="2"><a href="/charts/">Most Played<span class="hide-small"> Games</span><svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></th>
+<th class="text-center">Players<span class="hide-small"> Now</span></th>
+<th class="text-center">24h Peak</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="app" data-appid="730">
+<td class="applogo">
+<a href="/app/730/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725485006">
+</a>
+</td>
+<td>
+<a href="/app/730/charts/" class="css-truncate">Counter-Strike 2</a>
+
+</td>
+<td class="text-center tabular-nums green">985,669</td>
+
+<td class="text-center tabular-nums">1,395,045</td>
+
+</tr>
+
+<tr class="app" data-appid="570">
+<td class="applogo">
+<a href="/app/570/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725581863">
+</a>
+</td>
+<td>
+<a href="/app/570/charts/" class="css-truncate">Dota 2</a>
+
+</td>
+<td class="text-center tabular-nums green">575,229</td>
+
+<td class="text-center tabular-nums">638,538</td>
+
+</tr>
+
+<tr class="app" data-appid="2923300">
+<td class="applogo">
+<a href="/app/2923300/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725589375">
+</a>
+</td>
+<td>
+<a href="/app/2923300/charts/" class="css-truncate">Banana</a>
+
+</td>
+<td class="text-center tabular-nums green">392,268</td>
+
+<td class="text-center tabular-nums">483,889</td>
+
+</tr>
+
+<tr class="app" data-appid="2358720">
+<td class="applogo">
+<a href="/app/2358720/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="b7f722ddd5e23503f598586aa3700dd4d827bb2d/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/2358720/charts/" class="css-truncate">Black Myth: Wukong</a>
+
+</td>
+<td class="text-center tabular-nums green">264,528</td>
+
+<td class="text-center tabular-nums">1,062,232</td>
+
+</tr>
+
+<tr class="app" data-appid="578080">
+<td class="applogo">
+<a href="/app/578080/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="4f5bd6fbde8ef39aea742014f13ce91f567ca472/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/578080/charts/" class="css-truncate">PUBG: BATTLEGROUNDS</a>
+
+</td>
+<td class="text-center tabular-nums green">236,062</td>
+
+<td class="text-center tabular-nums">659,017</td>
+
+</tr>
+
+<tr class="app" data-appid="218">
+<td class="applogo">
+<a href="/app/218/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1696526017">
+</a>
+</td>
+<td>
+<a href="/app/218/charts/" class="css-truncate">Source SDK Base 2007</a>
+
+</td>
+<td class="text-center tabular-nums green">183,182</td>
+
+<td class="text-center tabular-nums">183,182</td>
+
+</tr>
+
+<tr class="app" data-appid="1938090">
+<td class="applogo">
+<a href="/app/1938090/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725644605">
+</a>
+</td>
+<td>
+<a href="/app/1938090/charts/" class="css-truncate">Call of Duty®</a>
+
+</td>
+<td class="text-center tabular-nums green">141,454</td>
+
+<td class="text-center tabular-nums">141,454</td>
+
+</tr>
+
+<tr class="app" data-appid="1422450">
+<td class="applogo">
+<a href="/app/1422450/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="cb84593a7056ddc04337c77295b33ce8d95b485e/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/1422450/charts/" class="css-truncate">Deadlock</a>
+
+</td>
+<td class="text-center tabular-nums green">138,172</td>
+
+<td class="text-center tabular-nums">138,725</td>
+
+</tr>
+
+<tr class="app" data-appid="252490">
+<td class="applogo">
+<a href="/app/252490/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="21aac0b6e20e1ba12f635e7deb730e32a51afbd5/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/252490/charts/" class="css-truncate">Rust</a>
+
+</td>
+<td class="text-center tabular-nums green">125,253</td>
+
+<td class="text-center tabular-nums">131,274</td>
+
+</tr>
+
+<tr class="app" data-appid="271590">
+<td class="applogo">
+<a href="/app/271590/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632508">
+</a>
+</td>
+<td>
+<a href="/app/271590/charts/" class="css-truncate">Grand Theft Auto V</a>
+
+</td>
+<td class="text-center tabular-nums green">117,662</td>
+
+<td class="text-center tabular-nums">154,649</td>
+
+</tr>
+
+<tr class="app" data-appid="2183900">
+<td class="applogo">
+<a href="/app/2183900/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725646814">
+</a>
+</td>
+<td>
+<a href="/app/2183900/charts/" class="css-truncate">Warhammer 40,000: Space Marine 2</a>
+
+<span class="green" title="New concurrent players max peak today"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-flame" aria-hidden="true"><path d="M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.863 14.498 10c0 3.5-3 6-6.5 6S1.5 13.512 1.5 10c0-1.298.536-2.56 1.425-3.286.376-.308.862 0 1.035.454C4.46 8.487 5.581 8.419 6 8c.282-.282.341-.811-.003-1.5C4.34 3.187 7.035.75 8.77.146c.39-.137.726.194.763.607ZM7.998 14.5c2.832 0 5-1.98 5-4.5 0-1.463-.68-2.19-1.879-3.383l-.036-.037c-1.013-1.008-2.3-2.29-2.834-4.434-.322.256-.63.579-.864.953-.432.696-.621 1.58-.046 2.73.473.947.67 2.284-.278 3.232-.61.61-1.545.84-2.403.633a2.79 2.79 0 0 1-1.436-.874A3.198 3.198 0 0 0 3 10c0 2.53 2.164 4.5 4.998 4.5Z"></path></svg></span>
+
+</td>
+<td class="text-center tabular-nums green">112,725</td>
+
+<td class="text-center tabular-nums green">134,302</td>
+
+</tr>
+
+<tr class="app" data-appid="1172470">
+<td class="applogo">
+<a href="/app/1172470/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725631273">
+</a>
+</td>
+<td>
+<a href="/app/1172470/charts/" class="css-truncate">Apex Legends</a>
+
+</td>
+<td class="text-center tabular-nums green">91,454</td>
+
+<td class="text-center tabular-nums">231,651</td>
+
+</tr>
+
+<tr class="app" data-appid="1086940">
+<td class="applogo">
+<a href="/app/1086940/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725579625">
+</a>
+</td>
+<td>
+<a href="/app/1086940/charts/" class="css-truncate">Baldur&apos;s Gate 3</a>
+
+</td>
+<td class="text-center tabular-nums green">85,281</td>
+
+<td class="text-center tabular-nums">85,281</td>
+
+</tr>
+
+<tr class="app" data-appid="2139460">
+<td class="applogo">
+<a href="/app/2139460/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="5c68f4a437fd924f745b1619040701f2ccc3c217/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/2139460/charts/" class="css-truncate">Once Human</a>
+
+</td>
+<td class="text-center tabular-nums green">77,819</td>
+
+<td class="text-center tabular-nums">104,322</td>
+
+</tr>
+
+<tr class="app" data-appid="236390">
+<td class="applogo">
+<a href="/app/236390/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="e2482457458b92116237f4e838787ba78d9b9cc1/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/236390/charts/" class="css-truncate">War Thunder</a>
+
+</td>
+<td class="text-center tabular-nums green">68,947</td>
+
+<td class="text-center tabular-nums">81,499</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+<div class="span6">
+<table class="table-products table-hover">
+<colgroup>
+<col style="width:119px">
+<col>
+<col style="width:120px">
+<col style="width:100px">
+</colgroup>
+<thead>
+<tr>
+<th class="table-title" colspan="2"><a href="/charts/?sort=24h">Trending<span class="hide-small"> Games</span></a></th>
+<th class="text-center">Last 7 days</th>
+<th class="text-center">Players<span class="hide-small"> Now</span></th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="app" data-appid="2183900">
+<td class="applogo">
+<a href="/app/2183900/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725646814">
+</a>
+</td>
+<td>
+<a href="/app/2183900/charts/" class="css-truncate">Warhammer 40,000: Space Marine 2</a>
+
+<span class="green" title="New concurrent players max peak today"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-flame" aria-hidden="true"><path d="M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.863 14.498 10c0 3.5-3 6-6.5 6S1.5 13.512 1.5 10c0-1.298.536-2.56 1.425-3.286.376-.308.862 0 1.035.454C4.46 8.487 5.581 8.419 6 8c.282-.282.341-.811-.003-1.5C4.34 3.187 7.035.75 8.77.146c.39-.137.726.194.763.607ZM7.998 14.5c2.832 0 5-1.98 5-4.5 0-1.463-.68-2.19-1.879-3.383l-.036-.037c-1.013-1.008-2.3-2.29-2.834-4.434-.322.256-.63.579-.864.953-.432.696-.621 1.58-.046 2.73.473.947.67 2.284-.278 3.232-.61.61-1.545.84-2.403.633a2.79 2.79 0 0 1-1.436-.874A3.198 3.198 0 0 0 3 10c0 2.53 2.164 4.5 4.998 4.5Z"></path></svg></span>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true">	<linearGradient x1="0" y1="0" x2="0" y2="1" id="graph-gradient">
+		<stop offset="0" stop-color="#c8ff00" stop-opacity="1"></stop>
+		<stop offset="1" stop-color="#414d19" stop-opacity="1"></stop>
+	</linearGradient><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M35 85.00L35 85.00L36 15.00L37 15.59L38 24.68L39 31.34L40 38.08L41 24.06L42 24.34"/></svg></td>
+<td class="text-center tabular-nums green">112,725</td>
+
+</tr>
+
+<tr class="app" data-appid="2878980">
+<td class="applogo">
+<a href="/app/2878980/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632598">
+</a>
+</td>
+<td>
+<a href="/app/2878980/charts/" class="css-truncate">NBA 2K25</a>
+
+<span class="green" title="New concurrent players max peak today"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-flame" aria-hidden="true"><path d="M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.863 14.498 10c0 3.5-3 6-6.5 6S1.5 13.512 1.5 10c0-1.298.536-2.56 1.425-3.286.376-.308.862 0 1.035.454C4.46 8.487 5.581 8.419 6 8c.282-.282.341-.811-.003-1.5C4.34 3.187 7.035.75 8.77.146c.39-.137.726.194.763.607ZM7.998 14.5c2.832 0 5-1.98 5-4.5 0-1.463-.68-2.19-1.879-3.383l-.036-.037c-1.013-1.008-2.3-2.29-2.834-4.434-.322.256-.63.579-.864.953-.432.696-.621 1.58-.046 2.73.473.947.67 2.284-.278 3.232-.61.61-1.545.84-2.403.633a2.79 2.79 0 0 1-1.436-.874A3.198 3.198 0 0 0 3 10c0 2.53 2.164 4.5 4.998 4.5Z"></path></svg></span>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M26 85.00L26 85.00L27 63.92L28 49.60L29 35.92L30 39.80L31 57.34L32 51.00L33 47.44L34 34.72L35 21.19L36 27.71L37 50.59L38 47.57L39 43.81L40 31.93L41 15.00L42 18.91"/></svg></td>
+<td class="text-center tabular-nums green">22,662</td>
+
+</tr>
+
+<tr class="app" data-appid="2641470">
+<td class="applogo">
+<a href="/app/2641470/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725640405">
+</a>
+</td>
+<td>
+<a href="/app/2641470/charts/" class="css-truncate">Spectre Divide</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M23 85.00L23 85.00L24 15.00L25 21.14L26 29.95L27 40.87L28 50.67L29 33.06L30 25.71L31 26.72L32 36.37L33 49.93L34 57.28L35 41.82L36 34.94L37 36.32L38 46.78L39 55.04L40 59.77L41 47.45L42 42.04"/></svg></td>
+<td class="text-center tabular-nums green">19,007</td>
+
+</tr>
+
+<tr class="app" data-appid="1934680">
+<td class="applogo">
+<a href="/app/1934680/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632572">
+</a>
+</td>
+<td>
+<a href="/app/1934680/charts/" class="css-truncate">Age of Mythology: Retold</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M29 85.00L29 85.00L30 15.00L31 16.51L32 37.72L33 47.30L34 45.74L35 28.12L36 17.18L37 17.95L38 41.02L39 48.93L40 43.93L41 26.54L42 18.87"/></svg></td>
+<td class="text-center tabular-nums green">19,715</td>
+
+</tr>
+
+<tr class="app" data-appid="2683150">
+<td class="applogo">
+<a href="/app/2683150/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636013">
+</a>
+</td>
+<td>
+<a href="/app/2683150/charts/" class="css-truncate">Ale &amp; Tale Tavern</a>
+
+<span class="green" title="New concurrent players max peak today"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-flame" aria-hidden="true"><path d="M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.863 14.498 10c0 3.5-3 6-6.5 6S1.5 13.512 1.5 10c0-1.298.536-2.56 1.425-3.286.376-.308.862 0 1.035.454C4.46 8.487 5.581 8.419 6 8c.282-.282.341-.811-.003-1.5C4.34 3.187 7.035.75 8.77.146c.39-.137.726.194.763.607ZM7.998 14.5c2.832 0 5-1.98 5-4.5 0-1.463-.68-2.19-1.879-3.383l-.036-.037c-1.013-1.008-2.3-2.29-2.834-4.434-.322.256-.63.579-.864.953-.432.696-.621 1.58-.046 2.73.473.947.67 2.284-.278 3.232-.61.61-1.545.84-2.403.633a2.79 2.79 0 0 1-1.436-.874A3.198 3.198 0 0 0 3 10c0 2.53 2.164 4.5 4.998 4.5Z"></path></svg></span>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M33 85.00L33 85.00L34 51.43L35 28.77L36 15.64L37 19.08L38 38.38L39 49.25L40 47.05L41 21.01L42 15.00"/></svg></td>
+<td class="text-center tabular-nums green">5,032</td>
+
+</tr>
+
+<tr class="app" data-appid="2401970">
+<td class="applogo">
+<a href="/app/2401970/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636000">
+</a>
+</td>
+<td>
+<a href="/app/2401970/charts/" class="css-truncate">Ace Attorney Investigations Collection</a>
+
+<span class="green" title="New concurrent players max peak today"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-flame" aria-hidden="true"><path d="M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.863 14.498 10c0 3.5-3 6-6.5 6S1.5 13.512 1.5 10c0-1.298.536-2.56 1.425-3.286.376-.308.862 0 1.035.454C4.46 8.487 5.581 8.419 6 8c.282-.282.341-.811-.003-1.5C4.34 3.187 7.035.75 8.77.146c.39-.137.726.194.763.607ZM7.998 14.5c2.832 0 5-1.98 5-4.5 0-1.463-.68-2.19-1.879-3.383l-.036-.037c-1.013-1.008-2.3-2.29-2.834-4.434-.322.256-.63.579-.864.953-.432.696-.621 1.58-.046 2.73.473.947.67 2.284-.278 3.232-.61.61-1.545.84-2.403.633a2.79 2.79 0 0 1-1.436-.874A3.198 3.198 0 0 0 3 10c0 2.53 2.164 4.5 4.998 4.5Z"></path></svg></span>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M38 85.00L38 85.00L39 45.76L40 28.20L41 15.00L42 27.44"/></svg></td>
+<td class="text-center tabular-nums green">1,868</td>
+
+</tr>
+
+<tr class="app" data-appid="1249970">
+<td class="applogo">
+<a href="/app/1249970/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725643159">
+</a>
+</td>
+<td>
+<a href="/app/1249970/charts/" class="css-truncate">Test Drive Unlimited Solar Crown</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M33 85.00L33 85.00L34 49.51L35 38.85L36 15.00L37 22.23L38 48.83L39 54.98L40 39.52L41 25.42L42 15.94"/></svg></td>
+<td class="text-center tabular-nums green">4,222</td>
+
+</tr>
+
+<tr class="app" data-appid="1881610">
+<td class="applogo">
+<a href="/app/1881610/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725641348">
+</a>
+</td>
+<td>
+<a href="/app/1881610/charts/" class="css-truncate">江湖客栈-赛季模式</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M0 84.98L0 84.98L1 84.98L2 84.91L3 84.88L4 84.88L5 84.80L6 84.93L7 85.00L8 30.35L9 22.89L10 22.89L11 15.00L12 21.37L13 62.92L14 52.45L15 35.76L16 29.44L17 20.62L18 24.21L19 61.86L20 38.30L21 28.16L22 21.91L23 20.61L24 40.87L25 54.15L26 36.64L27 30.21L28 29.01L29 22.53L30 27.46L31 64.17L32 41.51L33 30.84L34 25.46L35 21.28L36 26.10L37 62.38L38 51.12L39 38.26L40 22.84L41 21.27L42 24.80"/></svg></td>
+<td class="text-center tabular-nums green">2,394</td>
+
+</tr>
+
+<tr class="app" data-appid="2380050">
+<td class="applogo">
+<a href="/app/2380050/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725617988">
+</a>
+</td>
+<td>
+<a href="/app/2380050/charts/" class="css-truncate">Star Trucker</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M22 85.00L22 85.00L23 31.11L24 19.17L25 19.32L26 34.74L27 48.66L28 50.12L29 28.80L30 15.00L31 16.24L32 36.17L33 49.45L34 51.08L35 34.33L36 25.29L37 25.98L38 42.97L39 52.58L40 52.48L41 38.05L42 29.49"/></svg></td>
+<td class="text-center tabular-nums green">3,324</td>
+
+</tr>
+
+<tr class="app" data-appid="3010230">
+<td class="applogo">
+<a href="/app/3010230/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636013">
+</a>
+</td>
+<td>
+<a href="/app/3010230/charts/" class="css-truncate">Grand Fantasia：ORIGIN</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M14 85.00L14 85.00L15 78.26L16 77.06L17 79.27L18 78.39L19 79.99L20 55.10L21 24.64L22 30.88L23 15.00L24 15.51L25 27.75L26 31.33L27 43.36L28 48.05L29 26.60L30 27.03L31 37.11L32 40.43L33 48.37L34 46.61L35 31.72L36 31.70L37 41.84L38 44.04L39 49.16L40 51.23L41 35.42L42 35.44"/></svg></td>
+<td class="text-center tabular-nums green">2,401</td>
+
+</tr>
+
+<tr class="app" data-appid="2878600">
+<td class="applogo">
+<a href="/app/2878600/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725622867">
+</a>
+</td>
+<td>
+<a href="/app/2878600/charts/" class="css-truncate">Harry Potter: Quidditch Champions</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M22 85.00L22 85.00L23 26.01L24 15.00L25 17.28L26 39.51L27 55.49L28 61.53L29 49.83L30 42.65L31 43.58L32 54.16L33 65.10L34 68.83L35 61.05L36 54.79L37 55.61L38 62.83L39 69.99L40 72.12L41 64.92L42 59.98"/></svg></td>
+<td class="text-center tabular-nums green">2,350</td>
+
+</tr>
+
+<tr class="app" data-appid="1750770">
+<td class="applogo">
+<a href="/app/1750770/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="74547d192b518425d2357e1d18ab6f72272a5e4a/capsule_231x87.jpg">
+</a>
+</td>
+<td>
+<a href="/app/1750770/charts/" class="css-truncate">Starcom: Unknown Space</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M0 78.56L0 78.56L1 77.34L2 79.78L3 81.99L4 82.60L5 79.63L6 74.86L7 74.64L8 78.98L9 81.08L10 81.34L11 76.54L12 72.88L13 73.00L14 79.02L15 81.65L16 85.00L17 79.89L18 52.88L19 41.98L20 42.78L21 49.94L22 59.89L23 42.25L24 20.79L25 20.60L26 32.03L27 40.68L28 52.46L29 33.18L30 15.42L31 15.00L32 29.90L33 39.88L34 52.34L35 34.74L36 22.77L37 21.36L38 33.90L39 41.33L40 48.42L41 29.18L42 17.82"/></svg></td>
+<td class="text-center tabular-nums green">2,040</td>
+
+</tr>
+
+<tr class="app" data-appid="3035500">
+<td class="applogo">
+<a href="/app/3035500/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725567589">
+</a>
+</td>
+<td>
+<a href="/app/3035500/charts/" class="css-truncate">Fantasy Map Simulator</a>
+
+</td>
+
+<td class="app-chart"><svg width="120" height="40" viewBox="0 0 42 100" preserveAspectRatio="none" aria-hidden="true"><path fill="none" stroke="url(#graph-gradient)" stroke-width="2" vector-effect="non-scaling-stroke" d="M27 85.00L27 85.00L28 41.05L29 27.16L30 38.84L31 61.04L32 49.62L33 38.25L34 22.47L35 15.00L36 31.49L37 60.28L38 45.21L39 36.52L40 25.58L41 18.45L42 29.57"/></svg></td>
+<td class="text-center tabular-nums green">1,097</td>
+
+</tr>
+
+<tr class="app" data-appid="2399830">
+<td class="applogo">
+<a href="/app/2399830/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725648140">
+</a>
+</td>
+<td>
+<a href="/app/2399830/charts/" class="css-truncate">ARK: Survival Ascended</a>
+
+</td>
+
+<td colspan="2" class="i muted">Trending on SteamDB</td>
+
+</tr>
+
+<tr class="app" data-appid="1086940">
+<td class="applogo">
+<a href="/app/1086940/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725579625">
+</a>
+</td>
+<td>
+<a href="/app/1086940/charts/" class="css-truncate">Baldur&apos;s Gate 3</a>
+
+</td>
+
+<td colspan="2" class="i muted">Trending on SteamDB</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+<div class="row">
+<div class="span6">
+<table class="table-products table-hover">
+<colgroup>
+<col style="width:119px">
+<col>
+<col style="width:120px">
+<col style="width:100px">
+</colgroup>
+<thead>
+<tr>
+<th class="table-title" colspan="2"><a href="/upcoming/?lastweek&amp;sort=peak_desc"><span class="hide-small">Popular </span>Releases<svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></th>
+<th class="text-center">24h Peak</th>
+<th class="text-center"><img src="https://steamdb.info/static/country/us.svg" class="flag" alt="" width="18" height="18"> Price</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="app" data-appid="2878980">
+<td class="applogo">
+<a href="/app/2878980/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632598">
+</a>
+</td>
+<td><a href="/app/2878980/charts/" class="css-truncate">NBA 2K25</a></td>
+<td class="text-center green">35,823</td>
+<td class="text-center">$69.99</td>
+</tr>
+
+<tr class="app" data-appid="2641470">
+<td class="applogo">
+<a href="/app/2641470/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725640405">
+</a>
+</td>
+<td><a href="/app/2641470/charts/" class="css-truncate">Spectre Divide</a></td>
+<td class="text-center green">22,148</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="1934680">
+<td class="applogo">
+<a href="/app/1934680/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632572">
+</a>
+</td>
+<td><a href="/app/1934680/charts/" class="css-truncate">Age of Mythology: Retold</a></td>
+<td class="text-center green">20,219</td>
+<td class="text-center">$29.99</td>
+</tr>
+
+<tr class="app" data-appid="2440380">
+<td class="applogo">
+<a href="/app/2440380/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725644188">
+</a>
+</td>
+<td><a href="/app/2440380/charts/" class="css-truncate">Megaloot</a></td>
+<td class="text-center green">5,261</td>
+<td class="text-center">$9.99</td>
+</tr>
+
+<tr class="app" data-appid="2683150">
+<td class="applogo">
+<a href="/app/2683150/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636013">
+</a>
+</td>
+<td><a href="/app/2683150/charts/" class="css-truncate">Ale &amp; Tale Tavern</a></td>
+<td class="text-center green">5,032</td>
+<td class="text-center">$13.49</td>
+</tr>
+
+<tr class="app" data-appid="2920570">
+<td class="applogo">
+<a href="/app/2920570/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725644798">
+</a>
+</td>
+<td><a href="/app/2920570/charts/" class="css-truncate">Dale &amp; Dawson Stationery Supplies</a></td>
+<td class="text-center green">4,431</td>
+<td class="text-center">$7.99</td>
+</tr>
+
+<tr class="app" data-appid="2401970">
+<td class="applogo">
+<a href="/app/2401970/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636000">
+</a>
+</td>
+<td><a href="/app/2401970/charts/" class="css-truncate">Ace Attorney Investigations Collection</a></td>
+<td class="text-center green">4,344</td>
+<td class="text-center">$39.99</td>
+</tr>
+
+<tr class="app" data-appid="2380050">
+<td class="applogo">
+<a href="/app/2380050/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725617988">
+</a>
+</td>
+<td><a href="/app/2380050/charts/" class="css-truncate">Star Trucker</a></td>
+<td class="text-center green">3,621</td>
+<td class="text-center">$22.49</td>
+</tr>
+
+<tr class="app" data-appid="1881610">
+<td class="applogo">
+<a href="/app/1881610/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725641348">
+</a>
+</td>
+<td><a href="/app/1881610/charts/" class="css-truncate">江湖客栈-赛季模式</a></td>
+<td class="text-center green">3,608</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="3010230">
+<td class="applogo">
+<a href="/app/3010230/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636013">
+</a>
+</td>
+<td><a href="/app/3010230/charts/" class="css-truncate">Grand Fantasia：ORIGIN</a></td>
+<td class="text-center green">2,897</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="2878600">
+<td class="applogo">
+<a href="/app/2878600/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725622867">
+</a>
+</td>
+<td><a href="/app/2878600/charts/" class="css-truncate">Harry Potter: Quidditch Champions</a></td>
+<td class="text-center green">2,818</td>
+<td class="text-center">$29.99</td>
+</tr>
+
+<tr class="app" data-appid="1535560">
+<td class="applogo">
+<a href="/app/1535560/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725535755">
+</a>
+</td>
+<td><a href="/app/1535560/charts/" class="css-truncate">Farmer Against Potatoes Idle</a></td>
+<td class="text-center green">2,814</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="2223840">
+<td class="applogo">
+<a href="/app/2223840/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="8867491f1a6bba4ced66bef3c34316b270f2e7db/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/2223840/charts/" class="css-truncate">The Casting of Frank Stone</a></td>
+<td class="text-center green">2,396</td>
+<td class="text-center">$39.99</td>
+</tr>
+
+<tr class="app" data-appid="3035500">
+<td class="applogo">
+<a href="/app/3035500/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725567589">
+</a>
+</td>
+<td><a href="/app/3035500/charts/" class="css-truncate">Fantasy Map Simulator</a></td>
+<td class="text-center green">2,353</td>
+<td class="text-center">$7.19</td>
+</tr>
+
+<tr class="app" data-appid="1750770">
+<td class="applogo">
+<a href="/app/1750770/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="74547d192b518425d2357e1d18ab6f72272a5e4a/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/1750770/charts/" class="css-truncate">Starcom: Unknown Space</a></td>
+<td class="text-center green">2,040</td>
+<td class="text-center">$19.99</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<div class="span6">
+<table class="table-products table-hover">
+<colgroup>
+<col style="width:119px">
+<col>
+<col style="width:120px">
+<col style="width:100px">
+</colgroup>
+<thead>
+<tr>
+<th class="table-title" colspan="2"><a href="/upcoming/?lastweek">Hot<span class="hide-small"> Releases</span><svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></th>
+<th class="text-center">Rating</th>
+<th class="text-center"><img src="https://steamdb.info/static/country/us.svg" class="flag" alt="" width="18" height="18"> Price</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="app" data-appid="1535560">
+<td class="applogo">
+<a href="/app/1535560/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725535755">
+</a>
+</td>
+<td><a href="/app/1535560/charts/" class="css-truncate">Farmer Against Potatoes Idle</a></td>
+<td class="text-center green">92.50%</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="2084000">
+<td class="applogo">
+<a href="/app/2084000/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725621895">
+</a>
+</td>
+<td><a href="/app/2084000/charts/" class="css-truncate">Shogun Showdown</a></td>
+<td class="text-center green">92.12%</td>
+<td class="text-center">$13.49</td>
+</tr>
+
+<tr class="app" data-appid="2920570">
+<td class="applogo">
+<a href="/app/2920570/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725644798">
+</a>
+</td>
+<td><a href="/app/2920570/charts/" class="css-truncate">Dale &amp; Dawson Stationery Supplies</a></td>
+<td class="text-center green">89.99%</td>
+<td class="text-center">$7.99</td>
+</tr>
+
+<tr class="app" data-appid="3100110">
+<td class="applogo">
+<a href="/app/3100110/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="77aa8b7c2205617ea8b3735ef6a3957f99f09f16/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/3100110/charts/" class="css-truncate">学生时代：序章</a></td>
+<td class="text-center green">88.23%</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="1934680">
+<td class="applogo">
+<a href="/app/1934680/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632572">
+</a>
+</td>
+<td><a href="/app/1934680/charts/" class="css-truncate">Age of Mythology: Retold</a></td>
+<td class="text-center green">87.93%</td>
+<td class="text-center">$29.99</td>
+</tr>
+
+<tr class="app" data-appid="2401970">
+<td class="applogo">
+<a href="/app/2401970/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725636000">
+</a>
+</td>
+<td><a href="/app/2401970/charts/" class="css-truncate">Ace Attorney Investigations Collection</a></td>
+<td class="text-center green">87.58%</td>
+<td class="text-center">$39.99</td>
+</tr>
+
+<tr class="app" data-appid="1429850">
+<td class="applogo">
+<a href="/app/1429850/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725632572">
+</a>
+</td>
+<td><a href="/app/1429850/charts/" class="css-truncate">Sumerian Six</a></td>
+<td class="text-center green">86.89%</td>
+<td class="text-center">$29.99</td>
+</tr>
+
+<tr class="app" data-appid="2964280">
+<td class="applogo">
+<a href="/app/2964280/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725638089">
+</a>
+</td>
+<td><a href="/app/2964280/charts/" class="css-truncate">Penguin Helper</a></td>
+<td class="text-center green">86.88%</td>
+<td class="text-center">$1.99</td>
+</tr>
+
+<tr class="app" data-appid="2105910">
+<td class="applogo">
+<a href="/app/2105910/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725466766">
+</a>
+</td>
+<td><a href="/app/2105910/charts/" class="css-truncate">Garbanzo Quest</a></td>
+<td class="text-center green">86.68%</td>
+<td class="text-center">$8.99</td>
+</tr>
+
+<tr class="app" data-appid="3035500">
+<td class="applogo">
+<a href="/app/3035500/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725567589">
+</a>
+</td>
+<td><a href="/app/3035500/charts/" class="css-truncate">Fantasy Map Simulator</a></td>
+<td class="text-center green">86.44%</td>
+<td class="text-center">$7.19</td>
+</tr>
+
+<tr class="app" data-appid="1750770">
+<td class="applogo">
+<a href="/app/1750770/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="74547d192b518425d2357e1d18ab6f72272a5e4a/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/1750770/charts/" class="css-truncate">Starcom: Unknown Space</a></td>
+<td class="text-center green">86.39%</td>
+<td class="text-center">$19.99</td>
+</tr>
+
+<tr class="app" data-appid="3086510">
+<td class="applogo">
+<a href="/app/3086510/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725647547">
+</a>
+</td>
+<td><a href="/app/3086510/charts/" class="css-truncate">Nordhold: Origins</a></td>
+<td class="text-center green">86.19%</td>
+<td class="text-center">Free</td>
+</tr>
+
+<tr class="app" data-appid="2579270">
+<td class="applogo">
+<a href="/app/2579270/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="capsule_231x87.jpg?t=1725628946">
+</a>
+</td>
+<td><a href="/app/2579270/charts/" class="css-truncate">Satellite Odyssey: Prologue</a></td>
+<td class="text-center green">85.78%</td>
+<td class="text-center">$1.99</td>
+</tr>
+
+<tr class="app" data-appid="3163450">
+<td class="applogo">
+<a href="/app/3163450/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="01b709cdc196d04fb8799e7082add603201b9abe/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/3163450/charts/" class="css-truncate">GTAQ</a></td>
+<td class="text-center green">84.89%</td>
+<td class="text-center">$0.99</td>
+</tr>
+
+<tr class="app" data-appid="2872620">
+<td class="applogo">
+<a href="/app/2872620/charts/" tabindex="-1" aria-hidden="true">
+<img src="https://steamdb.info/static/img/applogo.svg" alt="" data-capsule="17831422c27017855c62c03fa9bb2596ffff6eac/capsule_231x87.jpg">
+</a>
+</td>
+<td><a href="/app/2872620/charts/" class="css-truncate">Stellarcraft The Prologue</a></td>
+<td class="text-center green">84.81%</td>
+<td class="text-center">Free</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+<div class="hover-swipe-hint"><svg width="24" height="24" viewBox="0 0 115 136" class="octicon" aria-hidden="true"><path fill="currentColor" d="m110 85-4-2c-6-3-12-3-18-2h-1a409 409 0 0 1 4-8l2-3 15-35 1-9c0-4-2-6-4-8-3-1-6 0-9 1l-4 4-1 1a113 113 0 0 0-14 24 572 572 0 0 1-4 7c-5-7-8-7-16-4-1-4-4-6-9-7-4-1-7 1-11 4v-1h-1c-2-4-6-6-9-6-4 0-8 1-10 5-3 2-5 5-6 9-4 8-7 17-9 26-1 5-2 11-1 17 0 10 4 18 12 25a44 44 0 0 0 35 12c5 0 12-1 17-6l8-5 13-11 18-9 6-3a10 10 0 0 0 0-16ZM7 94v-4l1-9c2-9 5-17 8-23 1-4 4-7 7-9 1-2 3-3 5-2l3 4v4l1 1c0 2 0 3 2 4l4-2a94 94 0 0 0 3-5 7 7 0 0 1 4-4l5 1 2 4v5l-1 1v2a3 3 0 0 0 6 1v-2a15 15 0 0 1 5-6 3 3 0 0 1 3-1 3 3 0 0 1 2 2 26 26 0 0 1 1 7v3l2 3 3-1 1-2h1l4-9 9-19 7-10 4-4 3-1 2 3-1 4a567 567 0 0 0-7 18 1729 1729 0 0 1-19 42l2 3c1 1 3 1 4-1h1v-1c2-3 7-5 11-5 5 0 9 1 11 3 2 1 2 2 2 3l-2 3-3 1c-8 2-15 6-22 12a449 449 0 0 1-22 17c-3 2-7 2-10 2-15 1-27-4-36-15-4-5-6-11-6-18ZM34 30h2l4-3a48 48 0 0 1 31-12l-1 1-3 2-2 3a2 2 0 0 0 0 2h6l10-6 2-4-3-4-10-7c-1-1-3-2-4-1v4l3 3a233 233 0 0 1 0 1c-12 0-23 4-33 13l-4 3v4a3 3 0 0 0 2 1Z"/></svg> Swipe right on a game to view details.</div>
+
+<div class="events" id="events">
+<button class="btn-link events-btn-prev" aria-controls="events-scroll" aria-label="Previous events"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-left" aria-hidden="true"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg></button>
+<button class="btn-link events-btn-next" aria-controls="events-scroll" aria-label="Next events"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-right" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></button>
+<div class="events-title">
+<span>Steam Sale Events <a href="#events" class="anchor" tabindex="-1" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></span>
+<a href="/sales/" class="events-filter">Browse and filter all current deals<svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a>
+</div>
+<div id="events-scroll" class="events-contain events-two-rows">
+
+<a class="event" href="/sales/">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/27766192/2a9641b94ef236eb7f3302403d1d2c9c5c654a86.jpg" alt="">
+<div class="event-name">
+
+<span class="counter" style="background:#fff;color:#000">LIVE</span> <b>Space Exploration Fest</b>
+<div>Browse and filter current deals…</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+
+</div>
+</a>
+
+<div class="event">
+<a href="/sales/event/4268931197594797616/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/39049601/b19e87424a7474164d3f7fcc46763cfecf1ee78b.jpg" alt="Steam Next Fest: October 2024 Edition - Coming Soon">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/nextfest/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4268931197594797616/"><b>Steam Next Fest: October 2024 Edition - Coming Soon</b></a>
+<div>A celebration of upcoming games featuring demos, livestreams and more</div>
+</div>
+<div class="event-end">
+
+Ends October 21st
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4262180872171586782/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/6879350/55d9db2b3292fae257264774851503c13cb3cfa4.jpg" alt="Larian Studios Publisher Sale 2024">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/larianstudiospublishersale2024/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4262180872171586782/"><b>Larian Studios Publisher Sale 2024</b></a>
+<div>Larian Studios Publisher Sale 2024</div>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4253173672915780823/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/32806657/4d48dbbec8b57df05ffd232b45fa948116facc1a.jpg" alt="2024 Rebellion Publisher Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/rebellionpublishersale2024/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4253173672915780823/"><b>2024 Rebellion Publisher Sale</b></a>
+<div>Sale Runs From 5th September - 9th September</div>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4253168598859000806/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/29728776/d98dc87079a886569515a8ace179ee9c5f9eca91.jpg" alt="Let&apos;s Build a Zoo Franchise Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/letsbuildazoofranchisesale/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4253168598859000806/"><b>Let&apos;s Build a Zoo Franchise Sale</b></a>
+<div>Hi everyone! Great news - Let&apos;s Build a Zoo is part of a Steam Daily Deal, which means you can grab the game &amp;amp; it&apos;s DLCs at their deepest discounts ever! It&apos;s time to Build a Zoo! Construct and decorate enclosures, buy and breed animals, hire zookeepers and vets... then try your hand at DNA splicing, and stitch together over 300,000 different types of animal. This can only go smoothly...</div>
+</div>
+<div class="event-end">
+
+Ends September 19th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4143953771616511902/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/44186271/916207d8582a9351980abc42c5bdb6fdf880672d.jpg" alt="Celebrate Green Hell&apos;s 5th Anniversary with Creepy Jar Developer Sale!">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/44186271/sale/creepy-jar-developer-sale-2024/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4143953771616511902/"><b>Celebrate Green Hell&apos;s 5th Anniversary with Creepy Jar Developer Sale!</b></a>
+<div>Hello Adventurers! The 5th Green Hell Anniversary is a huge thing for us and we would like to celebrate it with you with our very special Creepy Jar Developer Sale event! Check out the newest Free Update for Green Hell - Decorations, and make the jungle your own. Also see what we have in store for you in the future: StarRupture - a first-person open world base-building game with advanced combat and tons of exploration - and its first ever Gameplay Reveal Teaser. Creepy Jar Team</div>
+</div>
+<div class="event-end">
+
+Ends September 19th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4333111298289057724/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/21394/b69184095fd7279d3a482396ef287db56f26f7f6.jpg" alt="Focus Publisher Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/focuspublishersale2024/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4333111298289057724/"><b>Focus Publisher Sale</b></a>
+<div>From September 5 to 16, Focus Entertainment’s Publisher Sale brings discounts up to 90% over its catalog on Steam.</div>
+</div>
+<div class="event-end">
+
+Ends September 16th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4131562530399780515/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/44926613/f21725e16b47e76953d60b398a3c979aa9ae3e23.jpg" alt="Games from Croatia">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/gamesfromcroatia/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4131562530399780515/"><b>Games from Croatia</b></a>
+<div>Discover Croatia&apos;s finest games with the deepest discounts, including Talos Principle 2, Serious Sam, SCUM, and more!</div>
+</div>
+<div class="event-end">
+
+Ends September 14th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4589818379022828980/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/33273264/1d89c5fdf9274ca47455a92ba23551429410a64a.jpg" alt="Marvel vs. Capcom Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/33273264/sale/marvel-franchise/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4589818379022828980/"><b>Marvel vs. Capcom Sale</b></a>
+<div>Save up to 80% on select titles during the Marvel vs. Capcom Sale from Aug 30th at 10AM to Sep 13th at 10AM! Featured Products</div>
+</div>
+<div class="event-end">
+
+Ends September 13th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4256546298592311137/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/33273264/cd402ab201e299e46d46b31ad0007e51700225ff.jpg" alt="Dead Rising Franchise Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/33273264/sale/dead-rising/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4256546298592311137/"><b>Dead Rising Franchise Sale</b></a>
+<div>Save up to 80% on these Dead Rising titles from August 30th through September 13th. Featured Products</div>
+</div>
+<div class="event-end">
+
+Ends September 13th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4343243128427242602/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/32941731/d0608b5c8c16e959abc9a6ecdf1c688b8d9f5929.png" alt="🔷Warcana - Out Now!">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/32941731/sale/warcana_outnow/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4343243128427242602/"><b>🔷Warcana - Out Now!</b></a>
+<div>🔷WARCANA is a fantasy inspired real-time base defence strategy game with a unique deck-building mechanic. Take on the role of a mighty magician and face the challenge of surviving waves of unrelenting attacks whilst simultaneously summoning your own large armies. Lay waste to your rivals in either a battle-royale with up to 30 other players, or in a series of single player campaigns. 🔷Build your deck. Prepare your defences. Summon your armies. Survive the onslaught.</div>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4330858863429755412/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/32941517/414025fde1c45573a8eb11c340bdd73a215551bb.jpg" alt="Nomad Games Publisher Sale">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/32941517/sale/nomadgamespublishersale/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4330858863429755412/"><b>Nomad Games Publisher Sale</b></a>
+<div>Grab discounts on Digital Board Games, from the entire Nomad Games catalogue!</div>
+</div>
+<div class="event-end">
+
+Ends September 11th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/3819676210722458742/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/599215/557f4b4eb0986817e77cd348ba93495c18b1a429.png" alt="Vermintide 2: VERSUS - OPEN BETA">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/599215/sale/versusopenbeta/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/3819676210722458742/"><b>Vermintide 2: VERSUS - OPEN BETA</b></a>
+<div>Join the new team based PvP game mode</div>
+</div>
+<div class="event-end">
+
+Ends September 18th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/6524113244474306130/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/9869/6b3b8fb3dbe350fa2ea16488b5c431dfca9f1419.png" alt="IGN gamescom Studio">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/sale/igngamescomstudio24/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/6524113244474306130/"><b>IGN gamescom Studio</b></a>
+<div> IGN&apos;s Coverage of all things gamescom</div>
+</div>
+<div class="event-end">
+
+Ends September 7th
+</div>
+</div>
+
+<div class="event">
+<a href="/sales/event/4364635226647301458/">
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://clan.cloudflare.steamstatic.com/images/32623015/e1e4a0d386249621709b7f0062c3ebc513904ee0.jpg" alt="NIS America Weekly Wave (8/12 - 9/23)">
+</a>
+<div class="event-name">
+<a title="View event on Steam" href="https://store.steampowered.com/curator/32623015/sale/nisaweeklywave2024/?curator_clanid=4777282&amp;utm_source=SteamDB"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-steam" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg></a>
+<a href="/sales/event/4364635226647301458/"><b>NIS America Weekly Wave (8/12 - 9/23)</b></a>
+<div>Discover incredible deals each week. Enjoy six consecutive weeks of discounts on our top games!</div>
+</div>
+<div class="event-end">
+
+Ends September 23rd
+</div>
+</div>
+
+</div>
+<div class="d-flex">
+<a href="/sales/history/all/" class="muted" style="margin-left:auto">View all previous sale events…</a>
+</div>
+</div>
+
+<div class="events events-news-popups" id="news-popups">
+<button class="btn-link events-btn-prev" aria-controls="news-popups-scroll" aria-label="Previous messages"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-left" aria-hidden="true"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg></button>
+<button class="btn-link events-btn-next" aria-controls="news-popups-scroll" aria-label="Next messages"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-right" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></button>
+<div class="events-title">
+<span>Steam News Pop-ups <a href="#news-popups" class="anchor" tabindex="-1" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></span>
+</div>
+<div id="news-popups-scroll" class="events-contain">
+
+<a href="https://store.steampowered.com/app/2933620/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2933620">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/2864128517092960398/0/282ae50f4b24f40c20188552241ab06339ee668c.jpg?t=1725488664" alt="">
+
+<div class="event-name">
+<b>Call of Duty Black Ops 6 - Open Beta</b>
+</div>
+<div class="event-end">
+
+Ends September 8th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2515020/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2515020">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/7474530868895185511/0/61a80de4c236cf1b2430c46f77abfb1ac92122c4.jpg?t=1724353732" alt="">
+
+<div class="event-name">
+<b>FFXVI Prepurchase</b>
+</div>
+<div class="event-end">
+
+Ends September 13th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2401970/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2401970">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/5532760618608238505/0/78223626dfc4efad21b72ca0d18fc125f04542dd.jpg?t=1724781075" alt="">
+
+<div class="event-name">
+<b>Now Available - Ace Attorney Investigations Collection</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/1591600/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1591600">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/3092879238640720910/0/75d3b24452331307e3bd4f1ad3e40debf27e4ba7.jpg?t=1724696203" alt="">
+
+<div class="event-name">
+<b>Heroes Evolved - 91 Festival Update</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/3059650/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="3059650">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/5996268812074005028/0/b7ec10900b58687fdcaadf6a2d6fbf804f0ddd8f.jpg?t=1724354456" alt="">
+
+<div class="event-name">
+<b>Ark: Aberration Ascended</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/1672740/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1672740">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/4116742393028878787/0/76154b1abf23d2e448a56c23d29e63bf8d9dd504.jpg?t=1724859528" alt="">
+
+<div class="event-name">
+<b>Honkai Impact v7.7 Update - JP</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/1671200/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1671200">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/1987025017038721391/0/76154b1abf23d2e448a56c23d29e63bf8d9dd504.jpg?t=1724798041" alt="">
+
+<div class="event-name">
+<b>Honkai Impact v7.7 Update</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/815370/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="815370">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/2854082949243215970/0/2f24c1ddf5b9439589f21f3b189453fdf601c2b6.jpg?t=1724965412" alt="">
+
+<div class="event-name">
+<b>Green Hell</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/sale/RebellionPublisherSale2024/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="689240">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/1191458976282519968/0/8a4f93577fbd1ee0b264bddef72bcba55bdbaae5.jpg?t=1725407250" alt="">
+
+<div class="event-name">
+<b>Weekend Deal - Rebellion Publisher Sale</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/sale/LarianStudiosPublisherSale2024/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1101230">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/4934806149172782460/0/1906884f43744293719747a0d5c43e2d68668ddf.jpg?t=1725473335" alt="">
+
+<div class="event-name">
+<b>Weekend - Larian Publisher</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/692890/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="692890">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/8025532271407466340/0/45ce44943c048d467458e85412efd54b651d3ee8.jpg?t=1725300645" alt="">
+
+<div class="event-name">
+<b>Roboquest</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/sale/focuspublishersale2024/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1754410">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/897742283055278789/0/d05f289d2ce2f7d245fddad3da0279659c47eff7.jpg?t=1725549954" alt="">
+
+<div class="event-name">
+<b>Focus Publisher Sale</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/1771300/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1771300">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/9055854974373554026/0/5c58b129793240e9a131f1b740071ca9d04c4502.jpg?t=1725402595" alt="">
+
+<div class="event-name">
+<b>Pre-Purchase Now - Kingdom Come Deliverance II</b>
+</div>
+<div class="event-end">
+
+Ends September 12th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/627690/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="627690">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/889638286304337128/0/993604129367b8753228738aba61cc50f09f7e67.jpg?t=1725297557" alt="">
+
+<div class="event-name">
+<b>Idle Champions 7th Anniversary</b>
+</div>
+<div class="event-end">
+
+Ends September 11th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/578080/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="578080">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/6114010106386996131/0/ff721863d99899dbf01db5e36620bb7d718c2d11.jpg?t=1724707509" alt="">
+
+<div class="event-name">
+<b>PUBG- Veil of Taego Update</b>
+</div>
+<div class="event-end">
+
+Ends September 8th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2878980/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2878980">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/7439945088328837679/0/9e2a09a0af8324db6c257e958468d6c290195abb.jpg?t=1724969572" alt="">
+
+<div class="event-name">
+<b>NBA 2K25 - Now Available</b>
+</div>
+<div class="event-end">
+
+Ends September 11th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/1934680/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="1934680">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/3464883226617494777/0/7d00ffde3a634aee13507a0383cf616398683d7c.jpg?t=1719726425" alt="">
+
+<div class="event-name">
+<b>Now Available - Age of Mythology: Retold</b>
+</div>
+<div class="event-end">
+
+Ends September 11th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/815370/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="815370">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/7904195000191397296/0/8e29123b6a7031ba1ca3a394aea82d8ddf9358ff.jpg?t=1724778852" alt="">
+
+<div class="event-name">
+<b>Green Hell - Decorations Update</b>
+</div>
+<div class="event-end">
+
+Ends September 10th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2641470/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2641470">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/2294614804580527034/0/0fe78d0de4b86bb55c2c4a6a5ea5cfd65bf005c5.jpg?t=1725040257" alt="">
+
+<div class="event-name">
+<b>Now Available - Spectre Divide</b>
+</div>
+<div class="event-end">
+
+Ends September 10th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2223840/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2223840">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/6696178253304876268/0/74b1fed625ff302996f17b2e327962a91bdd02b7.jpg?t=1724967472" alt="">
+
+<div class="event-name">
+<b>Now Available - The Casting of Frank Stone</b>
+</div>
+<div class="event-end">
+
+Ends September 10th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/app/2380050/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event app" data-appid="2380050">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/2960270267632678368/0/dbae67130665a3b5f51b76558cba8c805b8520df.jpg?t=1724944762" alt="">
+
+<div class="event-name">
+<b>Star Trucker Launch</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+<a href="https://store.steampowered.com/category/space_exploration/?curator_clanid=4777282&amp;utm_source=SteamDB" class="event">
+
+<img src="https://steamdb.info/static/img/applogo.svg" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/mm/4528762774399901263/0/d27a38c58020e05cafaaab4efed44cd8087a3c67.jpg?t=1725386244" alt="">
+
+<div class="event-name">
+<b>Space Exploration Fest</b>
+</div>
+<div class="event-end">
+
+Ends September 9th
+</div>
+</a>
+
+</div>
+<div class="d-flex">
+<a href="/sales/newspopups/" class="muted" style="margin-left:auto">View all previous popups…</a>
+</div>
+</div>
+
+</div>
+<a href="/donate/" class="armored-headcrab">
+<span>SteamDB has been running ad-free since 2012.<br><b>Donate or contribute.</b></span>
+<svg width="32" height="32" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
+<div class="container container-stats">
+<h2 class="stats-title" id="stats">SteamDB in numbers <a href="#stats" class="anchor" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h2>
+<div class="row">
+<div class="span3">
+<a href="/apps/" class="number">341,636</a>
+<em>apps in database</em>
+</div>
+<div class="span3">
+<a href="/subs/" class="number">1,131,908</a>
+<em>packages in database</em>
+</div>
+<div class="span3">
+<a href="/bundles/" class="number">33,216</a>
+<em>bundles in database</em>
+</div>
+<div class="span3">
+<a href="/stats/releases/" class="number">12,628</a>
+<em>releases this year</em>
+</div>
+</div>
+</div>
+
+<div class="container">
+<h2 class="stats-title"><a href="/blog/" style="color:inherit">Our latest blog post<svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></h2>
+<a href="/blog/extension-achievements-update/" class="muted-banner last-post">
+<div class="header-title">SteamDB extension update: Steam Community achievements page overhaul</div>
+<div class="header-subtitle">Achievements are grouped by update, DLC, and multiplayer categories. The extension is now localized into 45 languages.</div>
+</a>
+</div>
+
+<div class="container">
+
+<h2 class="stats-title" id="apphistory">Recent app events <a href="#apphistory" class="anchor" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h2>
+
+<ul class="app-history app-history-logos">
+
+<li class="app-history-row app" data-appid="3197680">
+<span class="appid"><a href="/app/3197680/">3197680</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3197680/5647f5f01615af9493abe52e3647dc1f5ca3da89/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Warplock</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T19:10:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2616730">
+<span class="appid"><a href="/app/2616730/">2616730</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2616730/capsule_231x87.jpg?t=1725649504">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>goblinAmerica Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T19:05:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3072240">
+<span class="appid"><a href="/app/3072240/">3072240</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3072240/f4893b28309992ac8372799ebfbfb92bd4ba6c4f/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Through The Backrooms</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T19:05:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3113340">
+<span class="appid"><a href="/app/3113340/">3113340</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3113340/05532a20f772da8293fad119eb467d545b2c585e/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Port Town: Survival</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T19:00:07+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3194350">
+<span class="appid"><a href="/app/3194350/">3194350</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3194350/613b9c630ca7a5c9cf3fcbbb3420cca89505a46d/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Headlice Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T19:00:07+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3213350">
+<span class="appid"><a href="/app/3213350/">3213350</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3213350/2cc4f85e48d96d64b56887283f24a1839d167a4f/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Brownie&apos;s Adventure: The Final Resolution</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:55:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3176570">
+<span class="appid"><a href="/app/3176570/">3176570</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3176570/67a8ae895fd7bb1201e76c1d956cfdab963fe408/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Monster Lover 2 Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T18:55:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3099710">
+<span class="appid"><a href="/app/3099710/">3099710</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3099710/ab4ee5ff76bd386e34fdb5a140d8d48206af877b/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-ignored" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.53 3.28-5.5 5.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l5.5-5.5a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
+<span class="app-history-action">Removed from store: <del>烽火佳人拯救计划</del></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:55:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3206090">
+<span class="appid"><a href="/app/3206090/">3206090</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3206090/7c312fed731f718d05ec0f1680235ecb3e837224/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Arena of the Titans</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:50:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2780150">
+<span class="appid"><a href="/app/2780150/">2780150</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2780150/e5c96bd2c599d463d4a95ae642da3c3a3c296641/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>DinDemo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T18:49:44+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3124660">
+<span class="appid"><a href="/app/3124660/">3124660</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3124660/capsule_231x87.jpg?t=1725649211">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Momogatari Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T18:40:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2517440">
+<span class="appid"><a href="/app/2517440/">2517440</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2517440/11bc9bd749bd38071e1b1e0142ca580275707499/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Mini City: Mayhem</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:35:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="1560150">
+<span class="appid"><a href="/app/1560150/">1560150</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1560150/5db796293938c2db0473df1c4cc7fe15173a87af/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Mythren</ins> <i class="muted">(Mythren Combat Alpha)</i></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:35:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3126690">
+<span class="appid"><a href="/app/3126690/">3126690</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3126690/ffca238cedf2f57642b2f5e647ac551304c69f3d/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>College Kings 2 - Episode 6 &quot;Summer Showdown&quot;</ins></span>
+<span class="app-history-type">DLC</span>
+<relative-time class="timeago" datetime="2024-09-06T18:35:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2965910">
+<span class="appid"><a href="/app/2965910/">2965910</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2965910/4bd42ad4477e358ce9ebc21561c153ac889ebe3a/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>AZEM</ins> <i class="muted">(Azem)</i></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:35:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3151660">
+<span class="appid"><a href="/app/3151660/">3151660</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3151660/4f8aa4484bcb5ee57482a5f63176adddf6807652/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Uppercute</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:30:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3029420">
+<span class="appid"><a href="/app/3029420/">3029420</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3029420/d6dbf8b7747df92a1f9855b34286c226e316eba6/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Spooktober Visual Novel Jam!</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:30:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2880270">
+<span class="appid"><a href="/app/2880270/">2880270</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2880270/68dcd476579e9d76073f3cdd7303f47e89510832/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-renamed" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm9.03 6.03-3.25 3.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.97-1.97H4.75a.75.75 0 0 1 0-1.5h4.69L7.47 5.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l3.25 3.25a.75.75 0 0 1 0 1.06Z"></path></svg>
+<span class="app-history-action">Renamed: <span class="diff"><del>Capyverse Oddyssey</del> &rsaquo; <ins>Capyverse Odyssey</ins></span>, Renamed: <span class="diff"><del>Multiverse Battle Royale</del> &rsaquo; <ins>Capyverse Oddyssey</ins></span></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:28:13+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3191430">
+<span class="appid"><a href="/app/3191430/">3191430</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3191430/23fddd7412266c584cc2409d20c3f47e351a7def/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Rock Digger Playtest</ins></span>
+<span class="app-history-type">Beta</span>
+<relative-time class="timeago" datetime="2024-09-06T18:27:19+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3175190">
+<span class="appid"><a href="/app/3175190/">3175190</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3175190/4017f8b656d9907cdca825304fa62e9ab17ff309/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>QuantumPulse 2A</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:25:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3208910">
+<span class="appid"><a href="/app/3208910/">3208910</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3208910/386b56134e739304479f1fc7bc4c370852839b0b/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>The Good Dog: Chasing Shadows</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:25:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3215090">
+<span class="appid"><a href="/app/3215090/">3215090</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3215090/f91dd8bda3378b48aca7ec87dfe335357da26da4/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Inventorix Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T18:20:44+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3179110">
+<span class="appid"><a href="/app/3179110/">3179110</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3179110/8b1d20f4c96046833ce7333013b2e886191f0d6b/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Winter Girl Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T18:20:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3204250">
+<span class="appid"><a href="/app/3204250/">3204250</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3204250/08484b59b467a5de1ea9e487d169705b8601aee3/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Lost But Found</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:10:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3211550">
+<span class="appid"><a href="/app/3211550/">3211550</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3211550/capsule_231x87.jpg?t=1725645733">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Valor Of Man Playtest</ins> <i class="muted">(source: Store API)</i></span>
+
+<relative-time class="timeago" datetime="2024-09-06T18:05:02+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3180760">
+<span class="appid"><a href="/app/3180760/">3180760</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3180760/8d782e2786d725752e19bc0eb9d866c449272a67/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Slimeer</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T18:00:04+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="2840430">
+<span class="appid"><a href="/app/2840430/">2840430</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2840430/5df957c0136a98003ff34bedcee06ccc8b4b3f8c/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-renamed" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm9.03 6.03-3.25 3.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.97-1.97H4.75a.75.75 0 0 1 0-1.5h4.69L7.47 5.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l3.25 3.25a.75.75 0 0 1 0 1.06Z"></path></svg>
+<span class="app-history-action">Renamed on store: <span class="diff"><del>ZenFire</del> &rsaquo; <ins>Zen Fire</ins></span></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T17:55:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3166400">
+<span class="appid"><a href="/app/3166400/">3166400</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3166400/c1fa69b6e99052f63e92b3dd5a92de60eaf84d5c/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Astra Ignota Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T17:52:46+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3211900">
+<span class="appid"><a href="/app/3211900/">3211900</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3211900/fbb6dfc78201fc06f4ec5731bfc304ffadcc477d/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Gas Station Simulator: Drive &amp; Pumping Demo</ins></span>
+<span class="app-history-type">Demo</span>
+<relative-time class="timeago" datetime="2024-09-06T17:46:05+00:00"></relative-time>
+
+</li>
+
+<li class="app-history-row app" data-appid="3143000">
+<span class="appid"><a href="/app/3143000/">3143000</a></span>
+<img src="https://steamdb.info/static/img/applogo.svg" class="applogo" alt="" width="80" height="30" data-src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3143000/ede328c4993c8bad1cd27af3a1392329fc571eab/capsule_231x87.jpg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Dr. Priori’s Time Escape</ins></span>
+<span class="app-history-type">Game</span>
+<relative-time class="timeago" datetime="2024-09-06T17:45:03+00:00"></relative-time>
+
+</li>
+
+</ul>
+
+<div class="text-center">
+<a href="/history/events/">View more app history entries…</a>
+</div>
+
+<h2 class="stats-title" id="subhistory">Recent package events <a href="#subhistory" class="anchor" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h2>
+<ul class="app-history">
+
+<li class="app-history-row package" data-subid="1126976">
+<span class="appid"><a href="/sub/1126976/">1126976</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Monster Lover 2 Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T19:10:09+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1103256">
+<span class="appid"><a href="/sub/1103256/">1103256</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Gnomes vs Knights</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T19:00:06+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1095237">
+<span class="appid"><a href="/sub/1095237/">1095237</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Cat Clash</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T19:00:06+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1040268">
+<span class="appid"><a href="/sub/1040268/">1040268</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-renamed" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm9.03 6.03-3.25 3.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.97-1.97H4.75a.75.75 0 0 1 0-1.5h4.69L7.47 5.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l3.25 3.25a.75.75 0 0 1 0 1.06Z"></path></svg>
+<span class="app-history-action">Renamed on store: <span class="diff"><del>Knightly Passions (Original Game Soundtrack)</del> &rsaquo; <ins>Knightly Passions: Between Life and Death</ins></span></span>
+<relative-time class="timeago" datetime="2024-09-06T18:50:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1040268">
+<span class="appid"><a href="/sub/1040268/">1040268</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Knightly Passions (Original Game Soundtrack)</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T18:45:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1104968">
+<span class="appid"><a href="/sub/1104968/">1104968</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Scary Bingo</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T18:10:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1118852">
+<span class="appid"><a href="/sub/1118852/">1118852</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Super Chillers: The Chat Room Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:08:54+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1131120">
+<span class="appid"><a href="/sub/1131120/">1131120</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Waffle Cone Willie Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:08:54+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1136916">
+<span class="appid"><a href="/sub/1136916/">1136916</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>农场还债物语 Soundtrack</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:08:45+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1120569">
+<span class="appid"><a href="/sub/1120569/">1120569</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Kumitantei: Old-School Slaughter Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:08:45+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="864175">
+<span class="appid"><a href="/sub/864175/">864175</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Redge for Beta Testing</ins> <i class="muted">(source: key activation)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:05:23+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1110274">
+<span class="appid"><a href="/sub/1110274/">1110274</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Warhammer 40,000: Space Marine 2 (Promo)</ins> <i class="muted">(source: key activation)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T18:05:23+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="895179">
+<span class="appid"><a href="/sub/895179/">895179</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>ENDLESS™ Dungeon - Retail – Last Wish Edition (WW)</ins> <i class="muted">(source: key activation)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T17:35:21+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1133210">
+<span class="appid"><a href="/sub/1133210/">1133210</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Betrayal Beach - Island&apos;s Curse</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T17:30:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1132800">
+<span class="appid"><a href="/sub/1132800/">1132800</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Angel Legion-DLC Pose01</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T17:07:42+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="869882">
+<span class="appid"><a href="/sub/869882/">869882</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Space Crab VS</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T17:07:35+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1012659">
+<span class="appid"><a href="/sub/1012659/">1012659</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Terrorformer TD</ins> <i class="muted">(source: key activation)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T17:05:20+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1058937">
+<span class="appid"><a href="/sub/1058937/">1058937</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Break the Empire</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T17:05:13+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1005135">
+<span class="appid"><a href="/sub/1005135/">1005135</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>The Sims™ 4 Lovestruck Expansion Pack</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T17:05:13+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1007238">
+<span class="appid"><a href="/sub/1007238/">1007238</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-ignored" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.53 3.28-5.5 5.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l5.5-5.5a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
+<span class="app-history-action">Removed from store: <del>The Sims™ 4 Lovestruck Expansion Pack</del></span>
+<relative-time class="timeago" datetime="2024-09-06T17:05:13+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="368166">
+<span class="appid"><a href="/sub/368166/">368166</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-ignored" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.53 3.28-5.5 5.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l5.5-5.5a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
+<span class="app-history-action">Removed from store: <del>Planet Coaster: Ghostbusters™</del></span>
+<relative-time class="timeago" datetime="2024-09-06T16:55:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1088099">
+<span class="appid"><a href="/sub/1088099/">1088099</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>异星堡垒</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:45:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="974575">
+<span class="appid"><a href="/sub/974575/">974575</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Paper Plane Arena - A Medieval Fantasy</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:30:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1091191">
+<span class="appid"><a href="/sub/1091191/">1091191</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Egg Surprise - Path to Nortopia</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:25:05+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="993794">
+<span class="appid"><a href="/sub/993794/">993794</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Paper Dash - Las Vegas</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:25:05+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="998960">
+<span class="appid"><a href="/sub/998960/">998960</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Sugar Tanks Arena</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:20:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1121621">
+<span class="appid"><a href="/sub/1121621/">1121621</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>JudgeSim Soundtrack</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:20:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="434203">
+<span class="appid"><a href="/sub/434203/">434203</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-ignored" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.53 3.28-5.5 5.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l5.5-5.5a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
+<span class="app-history-action">Removed from store: <del>Wolfie&apos;s Breakout</del></span>
+<relative-time class="timeago" datetime="2024-09-06T16:10:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1109591">
+<span class="appid"><a href="/sub/1109591/">1109591</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Momogatari Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T16:06:19+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1132133">
+<span class="appid"><a href="/sub/1132133/">1132133</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Reality Breach Demo</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T16:06:19+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1121167">
+<span class="appid"><a href="/sub/1121167/">1121167</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>The Viewer&apos;s Game</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T16:06:19+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1077074">
+<span class="appid"><a href="/sub/1077074/">1077074</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Epstein 2</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:05:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="929123">
+<span class="appid"><a href="/sub/929123/">929123</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Thunder Jumper</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:05:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1120976">
+<span class="appid"><a href="/sub/1120976/">1120976</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>The Cool Guys Are Level 100</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:05:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1053952">
+<span class="appid"><a href="/sub/1053952/">1053952</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>AURA: Hentai Cards - Horny Madness DLC</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T16:00:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1049900">
+<span class="appid"><a href="/sub/1049900/">1049900</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Dive Into The Survival</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T15:55:03+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1118831">
+<span class="appid"><a href="/sub/1118831/">1118831</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Dino Clicker</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T15:05:05+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1122647">
+<span class="appid"><a href="/sub/1122647/">1122647</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Project Solar</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T15:05:05+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1118618">
+<span class="appid"><a href="/sub/1118618/">1118618</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>The No No Man</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T15:05:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1101518">
+<span class="appid"><a href="/sub/1101518/">1101518</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Banana &amp; Tomato</ins> <i class="muted">(source: free on demand; account page)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T15:04:54+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1108494">
+<span class="appid"><a href="/sub/1108494/">1108494</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Forever To You! Soundtrack</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:55:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="951192">
+<span class="appid"><a href="/sub/951192/">951192</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Forever To You! - Animations Pack</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:55:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1127166">
+<span class="appid"><a href="/sub/1127166/">1127166</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Cursed Home</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:55:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1095282">
+<span class="appid"><a href="/sub/1095282/">1095282</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>BombMaze</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:30:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1066974">
+<span class="appid"><a href="/sub/1066974/">1066974</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-diff-ignored" aria-hidden="true"><path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.53 3.28-5.5 5.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l5.5-5.5a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
+<span class="app-history-action">Removed from store: <del>From Them</del></span>
+<relative-time class="timeago" datetime="2024-09-06T14:25:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="946351">
+<span class="appid"><a href="/sub/946351/">946351</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>The Neverwhere Tales - Book 1</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:15:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1125290">
+<span class="appid"><a href="/sub/1125290/">1125290</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Lord of the Click 4</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:15:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1121664">
+<span class="appid"><a href="/sub/1121664/">1121664</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Traffic Race 3D 2</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:10:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1099301">
+<span class="appid"><a href="/sub/1099301/">1099301</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New on store: <ins>Ascend The Well</ins></span>
+<relative-time class="timeago" datetime="2024-09-06T14:10:04+00:00"></relative-time>
+</li>
+
+<li class="app-history-row package" data-subid="1085370">
+<span class="appid"><a href="/sub/1085370/">1085370</a></span>
+<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-bookmark" aria-hidden="true"><path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+<span class="app-history-action">New: <ins>Versus GO</ins> <i class="muted">(source: key activation)</i></span>
+<relative-time class="timeago" datetime="2024-09-06T14:05:12+00:00"></relative-time>
+</li>
+
+</ul>
+
+<div class="text-center">
+<a href="/history/events/subs/">View more package history entries…</a>
+</div>
+
+</div>
+</div>
+<a href="/donate/" class="armored-headcrab">
+<span>SteamDB has been running ad-free since 2012.<br><b>Donate or contribute.</b></span>
+<svg width="32" height="32" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
+</a>
+<div class="footer" role="contentinfo" id="steamdb-org" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
+<meta itemprop="name" content="SteamDB">
+<meta itemprop="url" content="https://steamdb.info/">
+<meta itemprop="logo" content="https://steamdb.info/static/logos/512px.png">
+<div class="footer-container">
+<div class="footer-menu hide-small">
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-info" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> About</li>
+
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/discord/">Discord</a></li>
+<li><a href="/discord/bot/">Discord Bot</a></li>
+<li><a href="/faq/">FAQ &amp; help</a></li>
+<li><a href="/donate/">Donate &amp; contribute</a></li>
+<li><a href="/extension/">Browser extension</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg> Tools</li>
+<li><a href="/sales/">Sales</a></li>
+<li><a href="/charts/">Charts</a></li>
+<li><a href="/calculator/">Calculator</a></li>
+<li><a href="/patchnotes/">Patch notes</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/instantsearch/">Instant search</a></li>
+<li><a href="/sales/history/">When is next sale?</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg> Tracking</li>
+<li><a href="/bundles/">Bundles</a></li>
+<li><a href="/history/">History</a></li>
+<li><a href="/pricechanges/">Price changes</a></li>
+<li><a href="/upcoming/free/">Free promotions</a></li>
+<li><a href="/tech/">Engines &amp; technologies</a></li>
+<li><a href="/stats/releases/">Game releases by year</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-database" aria-hidden="true"><path d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0c1.805 0 3.475.32 4.722.869.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Zm0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742 1.647 0 3.102-.295 4.117-.742.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869-1.805 0-3.475-.32-4.721-.869a6.327 6.327 0 0 1-.779-.406Z"></path></svg> Database</li>
+<li><a href="/tags/">Game tags</a></li>
+<li><a href="/calendar/">Release calendar</a></li>
+<li><a href="/upcoming/">Upcoming releases</a></li>
+<li><a href="/upcoming/mostfollowed/">Most followed upcoming</a></li>
+<li><a href="/badges/">Profile badges</a></li>
+<li><a href="/developers/">Developers</a></li>
+<li><a href="/publishers/">Publishers</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-number" aria-hidden="true"><path d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z"></path></svg> Rankings</li>
+<li><a href="/stats/gameratings/">Top rated games</a></li>
+<li><a href="/badge/13/">Top game owners</a></li>
+<li><a href="/stats/toplevels/">Top profile levels</a></li>
+<li><a href="/stats/globaltopsellers/">Top selling games</a></li>
+<li><a href="/topsellers/">Top selling games last week</a></li>
+<li><a href="/stats/mostfollowed/">Most followed games</a></li>
+<li><a href="/stats/mostwished/">Most wishlisted games</a></li>
+</ul>
+<ul>
+<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-person" aria-hidden="true"><path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg> Account</li>
+
+<li><a href="/login/" rel="nofollow">Sign in via Steam</a></li>
+<li><a href="/freepackages/">Free packages</a></li>
+
+<li>&nbsp;</li>
+<li><a href="https://steamstat.us/">Steam Status</a></li>
+<li><a href="https://steamapi.xpaw.me/">Steam Web API</a></li>
+</ul>
+</div>
+<div class="footer-copyright">
+<div>
+<p>
+SteamDB is a hobby project and is not affiliated with Valve or Steam. All times on the site are UTC.
+<a href="/faq/#what-steamdb-is-not">Fair use disclaimer</a> &middot;
+<a href="/faq/#privacy">Privacy</a>
+</p>
+<p>Steam and the Steam logo are trademarks of Valve Corporation. All other trademarks are property of their respective owners.</p>
+
+</div>
+<div class="footer-buttons">
+<a class="btn-social tooltipped tooltipped-n" aria-label="Discord" href="/discord/" rel="nofollow">
+<svg viewBox="0 0 16 16" width="24" height="24" class="btn-social-icon" aria-hidden="true">
+<path d="M13.54 2.9a13.2 13.2 0 00-3.25-1c-.02 0-.04 0-.05.02-.15.25-.3.58-.41.83a12.18 12.18 0 00-3.66 0 8.4 8.4 0 00-.41-.83.05.05 0 00-.05-.02 13.16 13.16 0 00-3.28 1.03 13.5 13.5 0 00-2.34 9.14c1.37 1 2.7 1.61 4 2.02.01 0 .04 0 .05-.02.3-.42.58-.86.82-1.33a.05.05 0 00-.03-.07 8.76 8.76 0 01-1.25-.6.05.05 0 010-.08l.24-.2a.05.05 0 01.05 0 9.46 9.46 0 008.05 0h.05l.25.2c.03.02.02.07 0 .09-.4.23-.82.43-1.26.59a.05.05 0 00-.02.07c.24.47.51.91.81 1.33.02.02.04.03.06.02a13.23 13.23 0 004.02-2.06 13.41 13.41 0 00-2.39-9.12zm-8.2 7.31c-.78 0-1.43-.72-1.43-1.6 0-.9.64-1.62 1.44-1.62.8 0 1.45.73 1.43 1.61 0 .89-.63 1.61-1.43 1.61zm5.32 0c-.79 0-1.43-.72-1.43-1.6 0-.9.63-1.62 1.43-1.62.81 0 1.45.73 1.44 1.61 0 .89-.63 1.61-1.44 1.61z"/>
+</svg>
+</a>
+<a class="btn-social tooltipped tooltipped-n" aria-label="Twitter" href="https://x.com/intent/follow?screen_name=SteamDB" itemprop="sameAs">
+<svg viewBox="0 0 24 24" width="24" height="24" class="btn-social-icon" aria-hidden="true">
+<path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+</svg>
+</a>
+<a class="btn-social tooltipped tooltipped-n" aria-label="Mastodon" href="https://infosec.exchange/@SteamDB" itemprop="sameAs" rel="me">
+<svg viewBox="0 0 38 38" width="24" height="24" class="btn-social-icon" aria-hidden="true">
+<path d="M36.4 8.4c-.6-4-4.1-7.2-8.3-7.8a67 67 0 0 0-9.6-.5c-6.3 0-7.7.4-8.4.5C6.1 1.2 2.3 4 1.4 8c-.4 2-.5 4.2-.4 6.2.1 3 .1 5.8.4 8.7.2 2 .5 3.9 1 5.8.8 3.4 4.3 6.3 7.7 7.5a21.2 21.2 0 0 0 12.6.3c1-.3 2-.6 2.8-1.2v-2.9a32 32 0 0 1-7.4.8c-4.3 0-5.5-2-5.8-2.8a8.6 8.6 0 0 1-.5-2.3h.1c2.4.5 4.8.8 7.3.8h1.7c2.5 0 5-.2 7.5-.7h.2c3.8-.7 7.4-3 7.8-8.7V17c0-.8.3-5.7 0-8.6Zm-5.9 14.2h-4V13c0-2-.8-3-2.6-3-2 0-2.9 1.1-2.9 3.6v5.3h-4v-5.3c0-2.5-1-3.7-2.9-3.7-1.7 0-2.6 1-2.6 3v9.7h-4v-10a7 7 0 0 1 1.6-4.8C10 6.6 11.6 6 13.4 6c2 0 3.6.8 4.6 2.4l1 1.6 1-1.6C21 6.8 22.6 6 24.7 6c1.7 0 3.2.6 4.2 1.8a7 7 0 0 1 1.6 4.9v10Z"/>
+</svg>
+</a>
+<a class="btn-social tooltipped tooltipped-n" aria-label="GitHub" href="https://github.com/SteamDatabase" itemprop="sameAs">
+<svg viewBox="0 0 16 16" width="24" height="24" class="btn-social-icon" aria-hidden="true">
+<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+</a>
+<a class="btn-social tooltipped tooltipped-n" aria-label="Steam Group" href="https://steamcommunity.com/groups/steamdb" itemprop="sameAs">
+<svg viewBox="0 0 16 16" width="24" height="24" class="btn-social-icon" aria-hidden="true">
+<path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id="js-notifications">
+<noscript class="noscript-toast">
+<div class="toast-header"><b>Enable JavaScript</b></div>
+<div class="toast-body">For SteamDB to function correctly, JavaScript should be enabled.</div>
+</noscript>
+</div>
+<div><div id="js-hover" hidden></div></div>
+<div id="js-screenshots">
+<div class="screenshot-header">
+<span>
+<a href="#" class="screenshot-name"></a>
+</span>
+<span>
+<button type="button" class="btn btn-sm btn-primary screenshot-prev">← Prev</button>
+<span class="screenshot-index"></span>
+<button type="button" class="btn btn-sm btn-primary screenshot-next">Next →</button>
+</span>
+<span>
+<a href="#" target="_blank" class="btn btn-sm screenshot-open hide-small">Open link</a>
+<button type="button" class="btn btn-sm btn-danger screenshot-close">Close<span class="hide-small"> (Esc)</span></button>
+</span>
+</div>
+<div class="screenshot-contain"></div>
+</div>
+<script nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.nonce='CfAVyZqBUDbikMxOTctv8GL6FBo=';d.innerHTML="window.__CF$cv$params={r:'8bf0c3432a002e1c',t:'MTcyNTY0OTg2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='CfAVyZqBUDbikMxOTctv8GL6FBo=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" nonce="CfAVyZqBUDbikMxOTctv8GL6FBo=" data-cf-beacon='{"rayId":"8bf0c3432a002e1c","serverTiming":{"name":{"cfL4":true}},"version":"2024.8.0","token":"91efbe05a59742ddadf5d555608bbe98"}' crossorigin="anonymous"></script>
+</body>
+</html>
