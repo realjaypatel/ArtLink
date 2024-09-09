@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Counter-Strike 2 Price history · ArtDB</title>
+<title>{{Data.title}} · ArtDB</title>
 
 <link rel="preload" href="/static/fonts/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/static/fonts/Inter-Bold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
@@ -20,12 +20,12 @@
 <meta property="twitter:site" content="@ArtDB">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ArtDB">
-<meta property="og:title" content="Counter-Strike 2 Price history">
+<meta property="og:title" content="{{Data.title}} Price history">
 
-<meta name="description" content="For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.
-Counter-Strike 2 Art charts, data, update history.">
-<meta property="og:description" content="For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.
-Counter-Strike 2 Art charts, data, update history.">
+<meta name="description" content="For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is {{Data.title}}.
+{{Data.title}} Art charts, data, update history.">
+<meta property="og:description" content="For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is {{Data.title}}.
+{{Data.title}} Art charts, data, update history.">
 
 <meta property="og:image" content="https://Artdb.info/app/730.png?_=693765534">
 
@@ -174,11 +174,11 @@ Counter-Strike 2 Art charts, data, update history.">
 <div class="container">
 <div class="pagehead">
 <div class="d-flex flex-grow">
-<img class="app-icon avatar" src="https://cdn.cloudflare.Artstatic.com/Artcommunity/public/images/apps/730/8dbc71957312bbd3baea65848b545be9eae2a355.jpg" alt="" width="32" height="32">
-<h1 itemprop="name">Counter-Strike 2</h1>
+<img class="app-icon avatar" src="{{Data.photo}}" alt="" width="32" height="auto">
+<h1 itemprop="name">{{Data.title}}</h1>
 </div>
 
-<div class="pagehead-actions app-links">
+<!-- <div class="pagehead-actions app-links">
 
 <a href="/extension/" id="js-extension-wishlist" class="tooltipped tooltipped-n disabled" aria-label="Install our browser extension to be able
 to wishlist on Art store directly">Wishlist</a>
@@ -196,7 +196,7 @@ Art://launch/730">
 <a href="/login/?page=app%2F730" rel="nofollow" role="button"
 class="tooltipped tooltipped-n" aria-label="You must be signed in to watch an app"
 ><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-eye" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg> <span id="js-watch-text">Watch</span></a>
-</div>
+</div> -->
 
 </div>
 <div class="row app-row">
@@ -204,27 +204,27 @@ class="tooltipped tooltipped-n" aria-label="You must be signed in to watch an ap
 <table class="table table-bordered table-hover table-responsive-flex">
 <tbody>
 <tr>
-<td class="span3">App ID</td>
-<td>730</td>
+<td class="span3">Art ID</td>
+<td>{{Data.id}}</td>
 </tr>
 <tr>
-<td>App Type</td>
-<td>Game</td>
+<td>Art Type</td>
+<td>{{Data.type}}</td>
 </tr>
 
 <tr>
-<td>Developer</td>
-<td><a href="/developer/Valve/" itemprop="author" content="Valve">Valve</a>
+<td>Artist Name</td>
+<td><a href="/developer/Valve/" itemprop="author" content="Valve">{{Data.artist}}</a>
 </td>
 </tr>
 
 <tr>
-<td>Publisher</td>
-<td><a href="/publisher/Valve/" itemprop="publisher" content="Valve">Valve</a>
+<td>Origin/Place</td>
+<td><a href="/publisher/Valve/" itemprop="publisher" content="Valve">{{Data.origin}}</a>
 </td>
 </tr>
 
-<tr>
+<!-- <tr>
 <td>Supported Systems</td>
 <td class="os-icons">
 <svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-windows" aria-hidden="true"><path d="M0 1h7v7H0zM0 9h7v7H0zM8 9h7v7H8zM8 1h7v7H8z"/></svg> Windows<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-linux" aria-hidden="true"><path fill-rule="evenodd" d="M6.813.034C-.65.635 1.329 8.518 1.218 11.158 1.119 12.555.655 14.262 0 16h2.018c.207-.737.36-1.465.425-2.159.122.085.252.167.39.245.227.133.42.31.626.498.48.438 1.025.933 2.09.996.071.004.143.006.213.006 1.077 0 1.813-.471 2.404-.85.284-.181.529-.338.76-.413.654-.205 1.226-.536 1.654-.957.067-.066.128-.134.187-.202.238.873.565 1.855.926 2.835H16c-1.034-1.597-2.1-3.162-2.079-5.159.044-3.948.45-11.409-7.109-10.806zm3.17 10.145a12.94 12.94 0 0 0-.852-.328 2.08 2.08 0 0 0 .213-.894c.018-.819-.395-1.483-.922-1.485-.526 0-.967.662-.985 1.48v.08a4.609 4.609 0 0 0-.956-.324l-.004-.093c-.03-1.491.884-2.725 2.043-2.756C9.68 5.827 10.642 7.01 10.672 8.5a3.192 3.192 0 0 1-.474 1.777 3.108 3.108 0 0 0-.215-.099zm-1.276.488c.253.087.539.185.921.35l.007.002c.357.147.78.415.76.859-.03.68-.92 1.32-1.743 1.578l-.005.002c-.342.11-.647.306-.97.513-.543.347-1.104.706-1.915.706-.054 0-.107 0-.16-.004-.744-.043-1.09-.36-1.53-.76-.232-.212-.472-.43-.781-.612l-.007-.004c-.667-.377-1.081-.845-1.108-1.253-.013-.203.077-.379.269-.522.416-.312.695-.516.88-.651.204-.15.266-.195.312-.238l.106-.103c.382-.372 1.021-.993 2.002-.993.6 0 1.264.23 1.972.686.333.217.623.317.99.444zM5.6 12.046c-.954-.07-1.721-.33-2.058-.559a.455.455 0 0 0-.51.753c.542.367 1.501.64 2.503.712.17.013.356.02.557.02.871 0 1.978-.083 3.162-.634a.455.455 0 0 0-.383-.824c-1.28.596-2.471.59-3.27.532zM4.25 8.97c-.072-.732-.462-1.285-.873-1.234-.41.05-.686.684-.614 1.415.03.32.123.604.25.82-.031.025-.12.09-.224.166l-.286.21c-.312-.408-.524-.993-.562-1.654-.074-1.29.542-2.373 1.377-2.422.834-.048 1.57.957 1.645 2.245.004.07.006.139.006.207A3.25 3.25 0 0 0 4.25 9a.614.614 0 0 0-.001-.029z"/></svg> Linux
@@ -250,16 +250,19 @@ View all in app info tab."><svg width="16" height="16" viewBox="0 0 16 16" class
 <tr>
 <td>Last Record Update</td>
 <td>4 September 2024 – 21:23:26 UTC <i class="muted">(<relative-time datetime="2024-09-04T21:23:26+00:00" itemprop="dateModified" content="2024-09-04T21:23:26+00:00"></relative-time>)</i></td>
-</tr>
+</tr> -->
 
 <tr>
 <td>Release Date</td>
-<td>21 August 2012 – 17:00:00 UTC <i class="muted">(<relative-time datetime="2012-08-21T17:00:00+00:00" itemprop="datePublished" content="2012-08-21"></relative-time>)</i></td>
+<td>{{Data.date}} </td>
 </tr>
-
+<tr>
+    <td>Details</td>
+    <td>{{Data.details}} </td>
+    </tr>
 </tbody>
 </table>
-<nav class="app-links" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<!-- <nav class="app-links" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 <meta itemprop="availability" content="http://schema.org/OnlineOnly">
 <meta itemprop="price" content="0">
 <meta itemprop="priceCurrency" content="USD">
@@ -281,15 +284,15 @@ View all in app info tab."><svg width="16" height="16" viewBox="0 0 16 16" class
 
 <a href="https://valveresourceformat.github.io" class="tooltipped tooltipped-n" aria-label="Browse VPK packages and Source 2 assets"><img src="/static/img/source2viewer.png" width="16" height="16" alt="VRF"> Source 2 Viewer</a>
 
-</nav>
+</nav> -->
 </div>
 <div class="span4">
 <div class="js-open-screenshot-viewer">
 
-<img src="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/apps/730/header.jpg?t=1725485006" class="app-logo" itemprop="image" alt="Counter-Strike 2" width="324" height="151">
+<img src="{{Data.photo}}" class="app-logo" itemprop="image" alt="{{Data.title}}" width="324" height="auto">
 
 </div>
-<div class="header-two-things">
+<!-- <div class="header-two-things">
 
 <a href="/app/730/charts/#reviews" class="header-thing tooltipped tooltipped-n" id="js-reviews-button" aria-label="87.10% of the 8,286,662 user reviews are positive.&#xa;&#xa;ArtDB Rating"
 
@@ -371,14 +374,14 @@ In-Game
 
 </div>
 
-<p class="header-description" itemprop="description">For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.</p>
+<p class="header-description" itemprop="description">For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is {{Data.title}}.</p> -->
 
 </div>
 </div>
 </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
 <div class="tabbable">
 <div class="tabnav">
 <nav class="tabnav-tabs" role="tablist">
@@ -1389,7 +1392,7 @@ Set your currency
 
 <tr>
 <td class="span3">serverbrowsername</td>
-<td>Counter-Strike 2</td>
+<td>{{Data.title}}</td>
 <td style="width:33px"><a href="/search/?a=app_keynames&amp;keyname=64" rel="nofollow" title="Search this key"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></a></td>
 </tr>
 
@@ -1935,7 +1938,7 @@ Set your currency
 <div class="Art-charts-header">
 <h2>Art charts</h2>
 <div>
-<share-action role="button" class="btn btn-sm btn-outline" data-text="Counter-Strike 2 had an all-time peak of 1,818,773 concurrent players on 6 May 2023.">
+<share-action role="button" class="btn btn-sm btn-outline" data-text="{{Data.title}} had an all-time peak of 1,818,773 concurrent players on 6 May 2023.">
 <svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-share-android" aria-hidden="true"><path d="M15 3a3 3 0 0 1-5.175 2.066l-3.92 2.179a2.994 2.994 0 0 1 0 1.51l3.92 2.179a3 3 0 1 1-.73 1.31l-3.92-2.178a3 3 0 1 1 0-4.133l3.92-2.178A3 3 0 1 1 15 3Zm-1.5 10a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 13.5 13Zm-9-5a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 4.5 8Zm9-5a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 13.5 3Z"></path></svg> Share
 </share-action>
 <script nonce="8vpqnM/EI9yVNCf1vbRfXFlwjLM=" integrity="sha512-gEwKmJ25XrOgblKWFO8F6naGPtQ7W6utbkszV5KuHt2fY7+FtGMIuEidSTE3gW/xxjpQAVomp4ZzvAizBYR+Lg==" src="/static/js/share.js?v=804c0a989db95eb3" defer></script>
@@ -1947,7 +1950,7 @@ Set your currency
 <ul class="app-chart-numbers-big" style="margin-bottom:0">
 <li class="app-chart-numbers-logo">
 
-<img src="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/apps/730/header.jpg?t=1725485006" class="app-logo" alt="Counter-Strike 2">
+<img src="{{Data.photo}}" class="app-logo" alt="{{Data.title}}">
 
 </li>
 <li><strong>910,177</strong> players right now</li>
@@ -2235,9 +2238,9 @@ CS2 Full Release
 </div>
 <p class="hint-with-octicon"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-info" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> <span>Suggest new noteworthy markers in our Discord #forum.</span></p>
 
-<p class="muted" style="margin-top:50px">How many players are playing Counter-Strike 2 right now on Art?</p>
-<p>Art player counter indicates there are currently 910177 players live playing Counter-Strike 2 on Art.</p>
-<p>Counter-Strike 2 had an all-time peak of 1818773 concurrent players on 6 May 2023.</p>
+<p class="muted" style="margin-top:50px">How many players are playing {{Data.title}} right now on Art?</p>
+<p>Art player counter indicates there are currently 910177 players live playing {{Data.title}} on Art.</p>
+<p>{{Data.title}} had an all-time peak of 1818773 concurrent players on 6 May 2023.</p>
 <button type="button" class="btn btn-outline" id="js-embed-button">Embed Art charts on your website</button>
 <div class="panel" id="js-embed-code" hidden>
 <div class="panel-heading">Copy this code and paste it into your website:</div>
@@ -2922,7 +2925,7 @@ No
 
 <tr class="package" data-subid="211096">
 <td><a href="/sub/211096/">211096</a></td>
-<td>Counter-Strike 2 (Free CN)</td>
+<td>{{Data.title}} (Free CN)</td>
 
 <td data-sort="1">
 <a class="tooltipped tooltipped-w" aria-label="This package has a store page" href="https://store.Artpowered.com/sub/211096/?curator_clanid=4777282&amp;utm_source=ArtDB">
@@ -3006,7 +3009,7 @@ No
 
 <tr class="package" data-subid="298961">
 <td><a href="/sub/298961/">298961</a></td>
-<td>Counter-Strike 2</td>
+<td>{{Data.title}}</td>
 
 <td data-sort="1">
 <a class="tooltipped tooltipped-w" aria-label="This package has a store page" href="https://store.Artpowered.com/sub/298961/?curator_clanid=4777282&amp;utm_source=ArtDB">
@@ -3020,7 +3023,7 @@ No
 
 <tr class="package" data-subid="298962">
 <td><a href="/sub/298962/">298962</a></td>
-<td>Counter-Strike 2</td>
+<td>{{Data.title}}</td>
 
 <td data-sort="1">
 <a class="tooltipped tooltipped-w" aria-label="This package has a store page" href="https://store.Artpowered.com/sub/298962/?curator_clanid=4777282&amp;utm_source=ArtDB">
@@ -3034,7 +3037,7 @@ No
 
 <tr class="package" data-subid="298963">
 <td><a href="/sub/298963/">298963</a></td>
-<td>Counter-Strike 2</td>
+<td>{{Data.title}}</td>
 
 <td data-sort="1">
 <a class="tooltipped tooltipped-w" aria-label="This package has a store page" href="https://store.Artpowered.com/sub/298963/?curator_clanid=4777282&amp;utm_source=ArtDB">
@@ -3082,7 +3085,7 @@ No
 
 <tr class="package" data-subid="817795">
 <td><a href="/sub/817795/">817795</a></td>
-<td>Counter-Strike 2 Limited Test Invite</td>
+<td>{{Data.title}} Limited Test Invite</td>
 
 <td></td>
 
@@ -3115,7 +3118,7 @@ No
 
 <tr class="app" data-appid="2279721">
 <td><a href="/app/2279721/">2279721</a></td>
-<td>Counter-Strike 2 Workshop Tools</td>
+<td>{{Data.title}} Workshop Tools</td>
 
 <td></td>
 
@@ -3146,7 +3149,7 @@ No
 
 <tr class="app" data-appid="2279720">
 <td><a href="/app/2279720/">2279720</a></td>
-<td>Counter-Strike 2 (Limited Test)</td>
+<td>{{Data.title}} (Limited Test)</td>
 
 <td></td>
 
@@ -3425,7 +3428,7 @@ No
 <td><a href="/depot/2347779/">2347779</a></td>
 <td class="depot-config">
 <span>64-bit</span><span>DLC <a href="/app/2279721/" class="app" data-appid="2279721">2279721</a></span>
-<span class="i muted">Counter-Strike 2 Workshop Tools</span>
+<span class="i muted">{{Data.title}} Workshop Tools</span>
 
 </td>
 
@@ -3912,7 +3915,7 @@ dprp
 
 <tr>
 <td>workshopdepot</td>
-<td><a href="/app/730/" class="app" data-appid="730">Counter-Strike 2</a> <i class="muted">(730)</i></td>
+<td><a href="/app/730/" class="app" data-appid="730">{{Data.title}}</a> <i class="muted">(730)</i></td>
 </tr>
 
 <tr>
@@ -4174,7 +4177,7 @@ windows
 </div>
 
 <div class="panel launch-option">
-<div class="panel-heading">5. Counter-Strike 2 (Limited Test)</div>
+<div class="panel-heading">5. {{Data.title}} (Limited Test)</div>
 <table class="table table-hover table-responsive-flex">
 <tr>
 <td>Executable</td>
@@ -4196,7 +4199,7 @@ windows
 
 <tr>
 <td>Description</td>
-<td><code>Counter-Strike 2 (Limited Test)</code></td>
+<td><code>{{Data.title}} (Limited Test)</code></td>
 <td></td>
 </tr>
 
@@ -4237,7 +4240,7 @@ macos
 </div>
 
 <div class="panel launch-option">
-<div class="panel-heading">6. Counter-Strike 2 Workshop Tools</div>
+<div class="panel-heading">6. {{Data.title}} Workshop Tools</div>
 <table class="table table-hover table-responsive-flex">
 <tr>
 <td>Executable</td>
@@ -4259,7 +4262,7 @@ macos
 
 <tr>
 <td>Description</td>
-<td><code>Counter-Strike 2 Workshop Tools</code></td>
+<td><code>{{Data.title}} Workshop Tools</code></td>
 <td></td>
 </tr>
 
@@ -4287,7 +4290,7 @@ windows
 <tr>
 <td>Owns DLC</td>
 <td>
-<a href="/app/2279721/" class="app" data-appid="2279721">Counter-Strike 2 Workshop Tools</a> <i class="muted">(2279721)</i>
+<a href="/app/2279721/" class="app" data-appid="2279721">{{Data.title}} Workshop Tools</a> <i class="muted">(2279721)</i>
 </td>
 <td class="tooltipped tooltipped-nw" aria-label="This launch option is enabled in Art only when the user owns the DLC AppID entered."><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-question" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg></td>
 </tr>
@@ -4697,7 +4700,7 @@ which likely means save files are in folder.
 
 <tr>
 <td>#display_menu</td>
-<td>Playing Counter-Strike 2</td>
+<td>Playing {{Data.title}}</td>
 </tr>
 
 <tr>
@@ -8411,7 +8414,7 @@ Foil<br><b>Elite Crewman</b>
 
 </div>
 </div>
-</div>
+</div> -->
 </div>
 
 <style>
@@ -8438,11 +8441,11 @@ z-index: 2;
 }
 </style>
 </div>
-<a href="/donate/" class="armored-headcrab">
+<!-- <a href="/donate/" class="armored-headcrab">
 <span>ArtDB has been running ad-free since 2012.<br><b>Donate or contribute.</b></span>
 <svg width="32" height="32" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
-</a>
-<div class="footer" role="contentinfo" id="Artdb-org" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
+</a> -->
+<!-- <div class="footer" role="contentinfo" id="Artdb-org" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
 <meta itemprop="name" content="ArtDB">
 <meta itemprop="url" content="https://Artdb.info/">
 <meta itemprop="logo" content="https://Artdb.info/static/logos/512px.png">
@@ -8547,7 +8550,7 @@ ArtDB is a hobby project and is not affiliated with Valve or Art. All times on t
 </div>
 </div>
 </div>
-</div>
+</div> -->
 
 </div>
 <div id="js-notifications">

@@ -15,11 +15,28 @@ router = APIRouter(
 
 @router.get('/{idi}', status_code=status.HTTP_200_OK)
 async def return_home(idi,request: Request):
+    collection = database.mycol
+    k = collection.find_one({"ArtId":int(idi)})
+    print(k)
+    photolink = k['URL']
+    photolink=photolink.split('html')
+    photolink = photolink[0]+'art'+photolink[1]+'jpg'
 
-    for dict in database.Data:
+
+    if k:        
+        data = {"id":idi,
+         "type":k['TECHNIQUE'],
+         "date":k['TIMEFRAME'],
+    "photo":photolink,
+    "title":k['TITLE'],
+    "artist":k['AUTHOR'],
+    "origin":k['LOCATION'],
+
+    "details":'hello world'}
+
+
         
-        if str(idi) == dict['id']:  
-            return templates.TemplateResponse("art.html", {"request": request,"data":database})
+        return templates.TemplateResponse("art.html", {"request": request,"Data":data})
     return 'not found'
 
 
