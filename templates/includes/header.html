@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>ArtDB</title>
+
+	<link rel="preload" href="/static/fonts/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/static/fonts/Inter-Bold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/static/fonts/Inter-Italic.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="/static/css/headcrab.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+
+	<link rel="alternate" type="application/rss+xml" title="ArtDB Blog" href="https://Artdb.info/api/BlogRSS/">
+
+	<link rel="canonical" href="https://Artdb.info/">
+
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:site" content="@ArtDB">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="ArtDB">
+	<meta property="og:title" content="ArtDB">
+
+	<meta name="description" content="ArtDB is a database of everything on Art.">
+	<meta property="og:description" content="ArtDB is a database of everything on Art.">
+
+	<meta property="og:image" content="https://Artdb.info/static/logos/512px.png">
+	<link rel="image_src" href="https://Artdb.info/static/logos/512px.png">
+
+	<meta name="theme-color" content="#000000">
+	<link rel="manifest" href="/Artdb.webmanifest">
+	<link rel="icon" type="image/svg+xml" href="https://Artdb.info/static/logos/vector_prefers_schema.svg">
+	<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="ArtDB">
+	<link rel="preconnect" href="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/">
+</head>
+
+<body class="page-home" itemscope itemtype="http://schema.org/WebSite"
+	data-Art-cdn="https://cdn.cloudflare.Artstatic.com/"
+	data-store-assets="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/" data-rev="934b1eee54">
+	<a class="skip-main" href="#main" id="js-skip-main">Skip to content</a>
+	<div class="header" role="banner">
+		<div class="header-menu-button-container">
+			<button type="button" class="header-menu-button" id="js-header-hamburger" accesskey="m"
+				aria-label="Toggle menu">
+
+				<img src="https://www.svgrepo.com/show/182585/shuffle-random.svg" alt="" height="16" width="16">
+				<span>Random</span></button>
+
+		</div>
+		<div class="header-navbar">
+			<a href="/" class="header-brand" itemprop="url">
+				<img src="/static/img/logo.png" alt="logo" width="30" height="30">
+				<span>ArtDB</span></a>
+			<form class="header-search" id="js-header-form" method="get" action="/search/" itemprop="potentialAction"
+				itemscope itemtype="http://schema.org/SearchAction" role="search">
+
+				<input type="hidden" name="a" value="all">
+				<meta itemprop="target" content="https://Artdb.info/search/?a=all&amp;q={q}">
+
+				<input type="text" accesskey="/" class="field" autocomplete="off" name="q" placeholder="Search…"
+					itemprop="query-input" aria-label="Search">
+				<button type="submit" class="submit" aria-label="Perform search" tabindex="-1"><svg width="16"
+						height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true">
+						<path
+							d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z">
+						</path>
+					</svg></button>
+			</form>
+			<a href="/sales/">Sales</a>
+			<a href="/charts/">Charts</a>
+			<a href="/calculator/">Calculator</a>
+			<a href="/calendar/">Calendar</a>
+			<a href="/patchnotes/">Patches</a>
+			<a href="/discord/">Discord</a>
+			<a href="/instantsearch/">Find games</a>
+			<button type="button" class="btn btn-outline header-search-close">Close</button>
+		</div>
+		<button type="button" class="header-search-mobile" aria-label="Open search"><svg width="24" height="24"
+				viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true">
+				<path
+					d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z">
+				</path>
+			</svg></button>
+		<div class="header-user hide-small">
+
+			<!-- <a class="header-login" href="/login/" rel="nofollow">
+				<svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-Art" aria-hidden="true">
+					<path
+						d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z" />
+				</svg> <span>Sign in</span>
+			</a> -->
+
+		</div>
+	</div>
+	<div class="header-search-suggestions">
+		<div class="container" id="js-search-tips" data-a="94HE6YATEI"
+			data-k="YzhlNWM1YTg3ZTdmMmI3NzMwNDMwMTRjYzQ0ZjNiMWYwNzMxOTE1MjEyYWMyZmQzNDhhNjEzMDAzMzNlM2FiMXZhbGlkVW50aWw9MTcyNjI1NDYyNyZ1c2VyVG9rZW49MGQ4MTU5MDE4ZDc2NTMxYWNjMjNlNTBjODdmNzgwNjU=">
+			<p>Start typing to see game suggestions. This only suggests apps that have a store page.</p>
+			<ul>
+				<li class="hide-small">Use slash key (<kbd>/</kbd>) to focus search from anywhere.</li>
+				<li class="hide-small">Use arrow keys (<kbd>↑</kbd> and <kbd>↓</kbd>) to navigate suggestions.</li>
+				<li class="hide-small">Use escape (<kbd>Esc</kbd>) to close search.</li>
+				<li>Enter an appid to be redirected to the app page.</li>
+				<li>Enter a Artid (765...) to be redirected to calculator.</li>
+				<li>Paste a profile link (/id/ or /profiles/) to be redirected to calculator.</li>
+				<li>Paste any url that contains app/, sub/, bundle/, or depot/ to be redirected to the relevant page.
+				</li>
+				<li><a href="https://www.algolia.com/?utm_content=Artdb.info&amp;utm_campaign=poweredby">Search is
+						powered by Algolia.</a></li>
+			</ul>
+		</div>
+		<div class="container header-search-enter hide-small">
+			<kbd>Enter</kbd> Submit to view all results.
+			<kbd>Ctrl+Enter</kbd> View and filter in instant search.
+		</div>
+		<div class="container" id="js-search-suggestions"></div>
+		<div class="header-search-side-close">
+			<div class="header-search-side-close-inner">Close &times;</div>
+		</div>
+	</div>
+	<div class="header-menu-container" hidden>
+		<div class="header-menu" tabindex="0">
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-info" aria-hidden="true">
+						<path
+							d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z">
+						</path>
+					</svg> About</li>
+
+				<li><a href="/blog/">Blog</a></li>
+				<li><a href="/discord/">Discord</a></li>
+				<li><a href="/discord/bot/">Discord Bot</a></li>
+				<li><a href="/faq/">FAQ &amp; help</a></li>
+				<li><a href="/donate/">Donate &amp; contribute</a></li>
+				<li><a href="/extension/">Browser extension</a></li>
+			</ul>
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-search" aria-hidden="true">
+						<path
+							d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z">
+						</path>
+					</svg> Tools</li>
+				<li><a href="/sales/">Sales</a></li>
+				<li><a href="/charts/">Charts</a></li>
+				<li><a href="/calculator/">Calculator</a></li>
+				<li><a href="/patchnotes/">Patch notes</a></li>
+				<li><a href="/search/">Search</a></li>
+				<li><a href="/instantsearch/">Instant search</a></li>
+				<li><a href="/sales/history/">When is next sale?</a></li>
+			</ul>
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-sync" aria-hidden="true">
+						<path
+							d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z">
+						</path>
+					</svg> Tracking</li>
+				<li><a href="/bundles/">Bundles</a></li>
+				<li><a href="/history/">History</a></li>
+				<li><a href="/pricechanges/">Price changes</a></li>
+				<li><a href="/upcoming/free/">Free promotions</a></li>
+				<li><a href="/tech/">Engines &amp; technologies</a></li>
+				<li><a href="/stats/releases/">Game releases by year</a></li>
+			</ul>
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-database" aria-hidden="true">
+						<path
+							d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0c1.805 0 3.475.32 4.722.869.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Zm0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742 1.647 0 3.102-.295 4.117-.742.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869-1.805 0-3.475-.32-4.721-.869a6.327 6.327 0 0 1-.779-.406Z">
+						</path>
+					</svg> Database</li>
+				<li><a href="/tags/">Game tags</a></li>
+				<li><a href="/calendar/">Release calendar</a></li>
+				<li><a href="/upcoming/">Upcoming releases</a></li>
+				<li><a href="/upcoming/mostfollowed/">Most followed upcoming</a></li>
+				<li><a href="/badges/">Profile badges</a></li>
+				<li><a href="/developers/">Developers</a></li>
+				<li><a href="/publishers/">Publishers</a></li>
+			</ul>
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-number" aria-hidden="true">
+						<path
+							d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z">
+						</path>
+					</svg> Rankings</li>
+				<li><a href="/stats/gameratings/">Top rated games</a></li>
+				<li><a href="/badge/13/">Top game owners</a></li>
+				<li><a href="/stats/toplevels/">Top profile levels</a></li>
+				<li><a href="/stats/globaltopsellers/">Top selling games</a></li>
+				<li><a href="/topsellers/">Top selling games last week</a></li>
+				<li><a href="/stats/mostfollowed/">Most followed games</a></li>
+				<li><a href="/stats/mostwished/">Most wishlisted games</a></li>
+			</ul>
+			<ul>
+				<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16"
+						class="octicon octicon-person" aria-hidden="true">
+						<path
+							d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z">
+						</path>
+					</svg> Account</li>
+
+				<li><a href="/login/" rel="nofollow">Sign in via Art</a></li>
+				<li><a href="/freepackages/">Free packages</a></li>
+
+				<li>&nbsp;</li>
+				<li><a href="https://Artstat.us/">Art Status</a></li>
+				<li><a href="https://Artapi.xpaw.me/">Art Web API</a></li>
+			</ul>
+			<div class="header-disclaimer">ArtDB is a hobby project and is not affiliated with Valve or Art.<br>All
+				times on the site are UTC.</div>
+			<div class="header-kbd hide-small"><kbd>M</kbd> toggle this menu <kbd>/</kbd> focus search</div>
+		</div>
+	</div>

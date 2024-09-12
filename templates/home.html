@@ -1,280 +1,325 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include "includes/header.html" %}
 
-<title>ArtDB</title>
+	<div class="body-wrap">
 
-<link rel="preload" href="/static/fonts/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/static/fonts/Inter-Bold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/static/fonts/Inter-Italic.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/static/css/headcrab.css">
-<link rel="stylesheet" href="/static/css/index.css">
-
-<link rel="alternate" type="application/rss+xml" title="ArtDB Blog" href="https://Artdb.info/api/BlogRSS/">
-
-<link rel="canonical" href="https://Artdb.info/">
-
-<meta property="twitter:card" content="summary">
-<meta property="twitter:site" content="@ArtDB">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="ArtDB">
-<meta property="og:title" content="ArtDB">
-
-<meta name="description" content="ArtDB is a database of everything on Art.">
-<meta property="og:description" content="ArtDB is a database of everything on Art.">
-
-<meta property="og:image" content="https://Artdb.info/static/logos/512px.png">
-<link rel="image_src" href="https://Artdb.info/static/logos/512px.png">
-
-<meta name="theme-color" content="#000000">
-<link rel="manifest" href="/Artdb.webmanifest">
-<link rel="icon" type="image/svg+xml" href="https://Artdb.info/static/logos/vector_prefers_schema.svg">
-<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="ArtDB">
-<link rel="preconnect" href="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/">
-</head>
-<body class="page-home" itemscope itemtype="http://schema.org/WebSite" data-Art-cdn="https://cdn.cloudflare.Artstatic.com/" data-store-assets="https://shared.cloudflare.Artstatic.com/store_item_assets/Art/" data-rev="934b1eee54">
-<a class="skip-main" href="#main" id="js-skip-main">Skip to content</a>
-<div class="header" role="banner">
-<div class="header-menu-button-container">
-<button type="button" class="header-menu-button" id="js-header-hamburger" accesskey="m" aria-label="Toggle menu"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-three-bars" aria-hidden="true"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path></svg> <span>Menu</span></button>
-
-</div>
-<div class="header-navbar">
-<a href="/" class="header-brand" itemprop="url"><svg width="30" height="30" viewBox="0 0 128 128" class="octicon octicon-Artdb" aria-hidden="true"><path fill-rule="evenodd" d="M63.9 0C30.5 0 3.1 11.9.1 27.1l35.6 6.7c2.9-.9 6.2-1.3 9.6-1.3l16.7-10c-.2-2.5 1.3-5.1 4.7-7.2 4.8-3.1 12.3-4.8 19.9-4.8 5.2-.1 10.5.7 15 2.2 11.2 3.8 13.7 11.1 5.7 16.3-5.1 3.3-13.3 5-21.4 4.8l-22 7.9c-.2 1.6-1.3 3.1-3.4 4.5-5.9 3.8-17.4 4.7-25.6 1.9-3.6-1.2-6-3-7-4.8L2.5 38.4c2.3 3.6 6 6.9 10.8 9.8C5 53 0 59 0 65.5c0 6.4 4.8 12.3 12.9 17.1C4.8 87.3 0 93.2 0 99.6 0 115.3 28.6 128 64 128c35.3 0 64-12.7 64-28.4 0-6.4-4.8-12.3-12.9-17 8.1-4.8 12.9-10.7 12.9-17.1 0-6.5-5-12.6-13.4-17.4 8.3-5.1 13.3-11.4 13.3-18.2 0-16.5-28.7-29.9-64-29.9zm22.8 14.2c-5.2.1-10.2 1.2-13.4 3.3-5.5 3.6-3.8 8.5 3.8 11.1 7.6 2.6 18.1 1.8 23.6-1.8s3.8-8.5-3.8-11c-3.1-1-6.7-1.5-10.2-1.5zm.3 1.7c7.4 0 13.3 2.8 13.3 6.2 0 3.4-5.9 6.2-13.3 6.2s-13.3-2.8-13.3-6.2c0-3.4 5.9-6.2 13.3-6.2zM45.3 34.4c-1.6.1-3.1.2-4.6.4l9.1 1.7a10.8 5 0 1 1-8.1 9.3l-8.9-1.7c1 .9 2.4 1.7 4.3 2.4 6.4 2.2 15.4 1.5 20-1.5s3.2-7.2-3.2-9.3c-2.6-.9-5.7-1.3-8.6-1.3zM109 51v9.3c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-9.2c11.5 5.3 27.4 8.6 44.9 8.6 17.6 0 33.6-3.3 45.2-8.7zm0 34.6v8.8c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-8.8c11.6 5.1 27.4 8.2 45 8.2s33.5-3.1 45-8.2z"/></svg> <span>ArtDB</span></a>
-<form class="header-search" id="js-header-form" method="get" action="/search/" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction" role="search">
-
-<input type="hidden" name="a" value="all">
-<meta itemprop="target" content="https://Artdb.info/search/?a=all&amp;q={q}">
-
-<input type="text" accesskey="/" class="field" autocomplete="off" name="q" placeholder="Search…" itemprop="query-input" aria-label="Search">
-<button type="submit" class="submit" aria-label="Perform search" tabindex="-1"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button>
-</form>
-<a href="/sales/">Sales</a>
-<a href="/charts/">Charts</a>
-<a href="/calculator/">Calculator</a>
-<a href="/calendar/">Calendar</a>
-<a href="/patchnotes/">Patches</a>
-<a href="/discord/">Discord</a>
-<a href="/instantsearch/">Find games</a>
-<button type="button" class="btn btn-outline header-search-close">Close</button>
-</div>
-<button type="button" class="header-search-mobile" aria-label="Open search"><svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button>
-<div class="header-user hide-small">
-
-<a class="header-login" href="/login/" rel="nofollow">
-<svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-Art" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg> <span>Sign in</span>
-</a>
-
-</div>
-</div>
-<div class="header-search-suggestions">
-<div class="container" id="js-search-tips" data-a="94HE6YATEI" data-k="YzhlNWM1YTg3ZTdmMmI3NzMwNDMwMTRjYzQ0ZjNiMWYwNzMxOTE1MjEyYWMyZmQzNDhhNjEzMDAzMzNlM2FiMXZhbGlkVW50aWw9MTcyNjI1NDYyNyZ1c2VyVG9rZW49MGQ4MTU5MDE4ZDc2NTMxYWNjMjNlNTBjODdmNzgwNjU=">
-<p>Start typing to see game suggestions. This only suggests apps that have a store page.</p>
-<ul>
-<li class="hide-small">Use slash key (<kbd>/</kbd>) to focus search from anywhere.</li>
-<li class="hide-small">Use arrow keys (<kbd>↑</kbd> and <kbd>↓</kbd>) to navigate suggestions.</li>
-<li class="hide-small">Use escape (<kbd>Esc</kbd>) to close search.</li>
-<li>Enter an appid to be redirected to the app page.</li>
-<li>Enter a Artid (765...) to be redirected to calculator.</li>
-<li>Paste a profile link (/id/ or /profiles/) to be redirected to calculator.</li>
-<li>Paste any url that contains app/, sub/, bundle/, or depot/ to be redirected to the relevant page.</li>
-<li><a href="https://www.algolia.com/?utm_content=Artdb.info&amp;utm_campaign=poweredby">Search is powered by Algolia.</a></li>
-</ul>
-</div>
-<div class="container header-search-enter hide-small">
-<kbd>Enter</kbd> Submit to view all results.
-<kbd>Ctrl+Enter</kbd> View and filter in instant search.
-</div>
-<div class="container" id="js-search-suggestions"></div>
-<div class="header-search-side-close">
-<div class="header-search-side-close-inner">Close &times;</div>
-</div>
-</div>
-<div class="header-menu-container" hidden>
-<div class="header-menu" tabindex="0">
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-info" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> About</li>
-
-<li><a href="/blog/">Blog</a></li>
-<li><a href="/discord/">Discord</a></li>
-<li><a href="/discord/bot/">Discord Bot</a></li>
-<li><a href="/faq/">FAQ &amp; help</a></li>
-<li><a href="/donate/">Donate &amp; contribute</a></li>
-<li><a href="/extension/">Browser extension</a></li>
-</ul>
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-search" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg> Tools</li>
-<li><a href="/sales/">Sales</a></li>
-<li><a href="/charts/">Charts</a></li>
-<li><a href="/calculator/">Calculator</a></li>
-<li><a href="/patchnotes/">Patch notes</a></li>
-<li><a href="/search/">Search</a></li>
-<li><a href="/instantsearch/">Instant search</a></li>
-<li><a href="/sales/history/">When is next sale?</a></li>
-</ul>
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg> Tracking</li>
-<li><a href="/bundles/">Bundles</a></li>
-<li><a href="/history/">History</a></li>
-<li><a href="/pricechanges/">Price changes</a></li>
-<li><a href="/upcoming/free/">Free promotions</a></li>
-<li><a href="/tech/">Engines &amp; technologies</a></li>
-<li><a href="/stats/releases/">Game releases by year</a></li>
-</ul>
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-database" aria-hidden="true"><path d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0c1.805 0 3.475.32 4.722.869.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55 0-.133-.058-.318-.282-.551-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5c-1.646 0-3.101.295-4.118.742-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55Zm0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10c1.646 0 3.101-.295 4.118-.742.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7c-1.805 0-3.475-.32-4.721-.869a6.15 6.15 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742 1.647 0 3.102-.295 4.117-.742.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869-1.805 0-3.475-.32-4.721-.869a6.327 6.327 0 0 1-.779-.406Z"></path></svg> Database</li>
-<li><a href="/tags/">Game tags</a></li>
-<li><a href="/calendar/">Release calendar</a></li>
-<li><a href="/upcoming/">Upcoming releases</a></li>
-<li><a href="/upcoming/mostfollowed/">Most followed upcoming</a></li>
-<li><a href="/badges/">Profile badges</a></li>
-<li><a href="/developers/">Developers</a></li>
-<li><a href="/publishers/">Publishers</a></li>
-</ul>
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-number" aria-hidden="true"><path d="M9 4.75A.75.75 0 0 1 9.75 4h4a.75.75 0 0 1 .53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.751.751 0 0 1 .822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 0 1-.53-1.28l1.72-1.72H9.75A.75.75 0 0 1 9 4.75Zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 1 1-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737ZM5.604.089A.75.75 0 0 1 6 .75v4.77h.711a.75.75 0 0 1 0 1.5H3.759a.75.75 0 0 1 0-1.5H4.5V2.15l-.334.223a.75.75 0 0 1-.832-1.248l1.5-1a.75.75 0 0 1 .77-.037Z"></path></svg> Rankings</li>
-<li><a href="/stats/gameratings/">Top rated games</a></li>
-<li><a href="/badge/13/">Top game owners</a></li>
-<li><a href="/stats/toplevels/">Top profile levels</a></li>
-<li><a href="/stats/globaltopsellers/">Top selling games</a></li>
-<li><a href="/topsellers/">Top selling games last week</a></li>
-<li><a href="/stats/mostfollowed/">Most followed games</a></li>
-<li><a href="/stats/mostwished/">Most wishlisted games</a></li>
-</ul>
-<ul>
-<li class="navigation-heading"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-person" aria-hidden="true"><path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg> Account</li>
-
-<li><a href="/login/" rel="nofollow">Sign in via Art</a></li>
-<li><a href="/freepackages/">Free packages</a></li>
-
-<li>&nbsp;</li>
-<li><a href="https://Artstat.us/">Art Status</a></li>
-<li><a href="https://Artapi.xpaw.me/">Art Web API</a></li>
-</ul>
-<div class="header-disclaimer">ArtDB is a hobby project and is not affiliated with Valve or Art.<br>All times on the site are UTC.</div>
-<div class="header-kbd hide-small"><kbd>M</kbd> toggle this menu <kbd>/</kbd> focus search</div>
-</div>
-</div>
+		<div class="body-content" id="main">
 
 
-<div class="body-wrap">
-
-<div class="body-content" id="main">
-
-	
-<div class="container container-hello">
-<h1 class="header-title">Database of everything on Art.</h1>
-<div>
-<p>This third-party website gives you better insight into the <a href="https://store.Artpowered.com/">Art</a> platform and everything in its database.</p>
-<p><a href="/faq/" title="Frequently Asked Questions">Look through our frequently asked questions</a> to learn more about ArtDB, <a href="/discord/">join our Discord</a>.</p>
-</div>
-</div>
-<div class="container container-products">
-<div class="row">
-<div class="span6">
-<table class="table-products table-hover">
-<colgroup>
-<col style="width:119px">
-<col>
-<col style="width:120px">
-<col style="width:100px">
-</colgroup>
+			<div class="container container-hello">
+				<h1 class="header-title">Database of everything on Art.</h1>
+				<div>
+					<p>This third-party website gives you better insight into the <a
+							href="https://store.Artpowered.com/">Art</a> platform and everything in its database.</p>
+					<p><a href="/faq/" title="Frequently Asked Questions">Look through our frequently asked
+							questions</a> to learn more about ArtDB, <a href="/discord/">join our Discord</a>.</p>
+				</div>
+			</div>
 
 
+			<div class="row app-row">
+				<div class="span8">
+				<table class="table table-bordered table-hover table-responsive-flex">
+				<tbody>
+				<tr>
+				<td class="span3">Art ID</td>
+				<td>{{Data.id}}</td>
+				</tr>
+				<tr>
+				<td>Art Type</td>
+				<td>{{Data.type}}</td>
+				</tr>
+				
+				<tr>
+				<td>Artist Name</td>
+				<td><a href="/developer/Valve/" itemprop="author" content="Valve">{{Data.artist}}</a>
+				</td>
+				</tr>
+				
+				<tr>
+				<td>Origin/Place</td>
+				<td><a href="/publisher/Valve/" itemprop="publisher" content="Valve">{{Data.origin}}</a>
+				</td>
+				</tr>
+				
+				<!-- <tr>
+				<td>Supported Systems</td>
+				<td class="os-icons">
+				<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-windows" aria-hidden="true"><path d="M0 1h7v7H0zM0 9h7v7H0zM8 9h7v7H8zM8 1h7v7H8z"/></svg> Windows<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-linux" aria-hidden="true"><path fill-rule="evenodd" d="M6.813.034C-.65.635 1.329 8.518 1.218 11.158 1.119 12.555.655 14.262 0 16h2.018c.207-.737.36-1.465.425-2.159.122.085.252.167.39.245.227.133.42.31.626.498.48.438 1.025.933 2.09.996.071.004.143.006.213.006 1.077 0 1.813-.471 2.404-.85.284-.181.529-.338.76-.413.654-.205 1.226-.536 1.654-.957.067-.066.128-.134.187-.202.238.873.565 1.855.926 2.835H16c-1.034-1.597-2.1-3.162-2.079-5.159.044-3.948.45-11.409-7.109-10.806zm3.17 10.145a12.94 12.94 0 0 0-.852-.328 2.08 2.08 0 0 0 .213-.894c.018-.819-.395-1.483-.922-1.485-.526 0-.967.662-.985 1.48v.08a4.609 4.609 0 0 0-.956-.324l-.004-.093c-.03-1.491.884-2.725 2.043-2.756C9.68 5.827 10.642 7.01 10.672 8.5a3.192 3.192 0 0 1-.474 1.777 3.108 3.108 0 0 0-.215-.099zm-1.276.488c.253.087.539.185.921.35l.007.002c.357.147.78.415.76.859-.03.68-.92 1.32-1.743 1.578l-.005.002c-.342.11-.647.306-.97.513-.543.347-1.104.706-1.915.706-.054 0-.107 0-.16-.004-.744-.043-1.09-.36-1.53-.76-.232-.212-.472-.43-.781-.612l-.007-.004c-.667-.377-1.081-.845-1.108-1.253-.013-.203.077-.379.269-.522.416-.312.695-.516.88-.651.204-.15.266-.195.312-.238l.106-.103c.382-.372 1.021-.993 2.002-.993.6 0 1.264.23 1.972.686.333.217.623.317.99.444zM5.6 12.046c-.954-.07-1.721-.33-2.058-.559a.455.455 0 0 0-.51.753c.542.367 1.501.64 2.503.712.17.013.356.02.557.02.871 0 1.978-.083 3.162-.634a.455.455 0 0 0-.383-.824c-1.28.596-2.471.59-3.27.532zM4.25 8.97c-.072-.732-.462-1.285-.873-1.234-.41.05-.686.684-.614 1.415.03.32.123.604.25.82-.031.025-.12.09-.224.166l-.286.21c-.312-.408-.524-.993-.562-1.654-.074-1.29.542-2.373 1.377-2.422.834-.048 1.57.957 1.645 2.245.004.07.006.139.006.207A3.25 3.25 0 0 0 4.25 9a.614.614 0 0 0-.001-.029z"/></svg> Linux
+				<span class="tooltipped tooltipped-n" aria-label="Art Deck: Playable" aria-hidden="true">
+				<svg width="16" height="16" viewBox="0 0 20 20" class="octicon octicon-Artdeck" aria-hidden="true"><path d="M7.777 4.302a5.698 5.698 0 1 1 0 11.396v3.19a8.889 8.889 0 1 0 0-17.777v3.191Zm0 9.587a3.889 3.889 0 1 0 0-7.778 3.889 3.889 0 0 0 0 7.778Z"/></svg>
+				<svg width="16" height="16" viewBox="0 0 20 20" class="octicon octicon-Artdeck_playable" aria-hidden="true"><path fill-rule="evenodd" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM8.61 9.444V15h2.779V9.444H8.61Zm.464-1.392a1.667 1.667 0 1 0 1.852-2.771 1.667 1.667 0 0 0-1.852 2.771Z"/></svg>
+				</span>
+				<meta itemprop="operatingSystem" content="Windows, Linux">
+				</td>
+				</tr>
+				
+				<tr>
+				<td>Technologies <span class="muted tooltipped tooltipped-n" aria-label="ArtDB automatically detects used technologies from game files.
+				View all in app info tab."><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-question" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg></span></td>
+				<td><a href="/tech/Engine/Source2/">Engine.Source2</a>
+				</td>
+				</tr>
+				
+				<tr>
+				<td>Last Change Number <a href="/faq/#changenumber" class="muted tooltipped tooltipped-n" aria-label="What is a changenumber?"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-question" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg></a></td>
+				<td><a href="/changelist/25080967/" rel="nofollow">25080967</a></td>
+				</tr>
+				<tr>
+				<td>Last Record Update</td>
+				<td>4 September 2024 – 21:23:26 UTC <i class="muted">(<relative-time datetime="2024-09-04T21:23:26+00:00" itemprop="dateModified" content="2024-09-04T21:23:26+00:00"></relative-time>)</i></td>
+				</tr> -->
+				
+				<tr>
+				<td>Release Date</td>
+				<td>{{Data.date}} </td>
+				</tr>
+				<tr>
+					<td>Details</td>
+					<td>{{Data.details}} </td>
+					</tr>
+				</tbody>
+				</table>
+				<!-- <nav class="app-links" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<meta itemprop="availability" content="http://schema.org/OnlineOnly">
+				<meta itemprop="price" content="0">
+				<meta itemprop="priceCurrency" content="USD">
+				
+				<a href="https://store.Artpowered.com/app/730/?curator_clanid=4777282&amp;utm_source=ArtDB" itemprop="url"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-Art" aria-hidden="true"><path d="M8 0a8 8 0 00-8 7.47c.07.1.13.21.18.32l4.15 1.67a2.2 2.2 0 011.31-.36l1.97-2.8v-.04c0-1.65 1.37-3 3.05-3a3.03 3.03 0 013.05 3 3.03 3.03 0 01-3.12 3l-2.81 1.97c0 .3-.05.6-.17.9a2.25 2.25 0 01-4.23-.37L.4 10.56A8.01 8.01 0 108 0zm2.66 4.27c-1.12 0-2.03.9-2.03 2s.91 1.99 2.03 1.99c1.12 0 2.03-.9 2.03-2s-.9-2-2.03-2zm0 .5c.85 0 1.53.66 1.53 1.49s-.68 1.5-1.53 1.5c-.84 0-1.52-.67-1.52-1.5s.68-1.5 1.52-1.5zM5.57 9.6c-.22 0-.43.04-.62.11l1.02.42c.65.26.95.99.68 1.62-.27.63-1 .93-1.65.67l-1-.4a1.73 1.73 0 003.13-.08c.18-.42.18-.88.01-1.3A1.69 1.69 0 005.57 9.6z"/></svg> Store</a>
+				<a href="https://Artcommunity.com/app/730/?curator_clanid=4777282&amp;utm_source=ArtDB">Hub</a>
+				
+				<a href="https://Artcommunity.com/my/gamecards/730?curator_clanid=4777282&amp;utm_source=ArtDB" class="tooltipped tooltipped-n" aria-label="View your game cards">
+				<svg width="16" height="16" viewBox="0 0 16 16" class="octicon" fill-rule="evenodd" aria-hidden="true"><path d="M11.5 3V2a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v12c0 .6.4 1 1 1h9.5a1 1 0 0 0 1-1v-1H15c.6 0 1-.5 1-1V4c0-.5-.4-1-1-1h-3.5ZM10 2.7H1.5v9.3H10V2.6ZM11.5 4v6.3H15V4h-3.5Z"/></svg>
+				</a>
+				
+				<a href="https://pcgamingwiki.com/api/appid.php?appid=730&amp;utm_source=ArtDB" class="tooltipped tooltipped-n" aria-label="View article on PCGamingWiki"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-book" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> PCGW</a>
+				
+				<a href="/app/730/patchnotes/" class="tooltipped tooltipped-n" aria-label="View patch notes for this game" itemprop="releaseNotes">
+				<svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-megaphone" aria-hidden="true"><path d="M3.25 9a.75.75 0 0 1 .75.75c0 2.142.456 3.828.733 4.653a.122.122 0 0 0 .05.064.212.212 0 0 0 .117.033h1.31c.085 0 .18-.042.258-.152a.45.45 0 0 0 .075-.366A16.743 16.743 0 0 1 6 9.75a.75.75 0 0 1 1.5 0c0 1.588.25 2.926.494 3.85.293 1.113-.504 2.4-1.783 2.4H4.9c-.686 0-1.35-.41-1.589-1.12A16.4 16.4 0 0 1 2.5 9.75.75.75 0 0 1 3.25 9Z"></path><path d="M0 6a4 4 0 0 1 4-4h2.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4a4 4 0 0 1-4-4Zm4-2.5a2.5 2.5 0 1 0 0 5h2v-5Z"></path><path d="M15.59.082A.75.75 0 0 1 16 .75v10.5a.75.75 0 0 1-1.189.608l-.002-.001h.001l-.014-.01a5.775 5.775 0 0 0-.422-.25 10.63 10.63 0 0 0-1.469-.64C11.576 10.484 9.536 10 6.75 10a.75.75 0 0 1 0-1.5c2.964 0 5.174.516 6.658 1.043.423.151.787.302 1.092.443V2.014c-.305.14-.669.292-1.092.443C11.924 2.984 9.713 3.5 6.75 3.5a.75.75 0 0 1 0-1.5c2.786 0 4.826-.484 6.155-.957.665-.236 1.154-.47 1.47-.64.144-.077.284-.161.421-.25l.014-.01a.75.75 0 0 1 .78-.061Z"></path></svg> Patches
+				</a>
+				
+				<a href="http://counter-strike.net/" class="tooltipped tooltipped-n" aria-label="Homepage: http://counter-strike.net/" rel="ugc"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-home" aria-hidden="true"><path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path></svg></a>
+				
+				<a href="https://valveresourceformat.github.io" class="tooltipped tooltipped-n" aria-label="Browse VPK packages and Source 2 assets"><img src="/static/img/source2viewer.png" width="16" height="16" alt="VRF"> Source 2 Viewer</a>
+				
+				</nav> -->
+				</div>
+				<div class="span4">
+				<div class="js-open-screenshot-viewer">
+				
+				<img src="{{Data.photo}}" class="app-logo" itemprop="image" alt="{{Data.title}}" width="324" height="auto">
+				
+				</div>
+				<!-- <div class="header-two-things">
+				
+				<a href="/app/730/charts/#reviews" class="header-thing tooltipped tooltipped-n" id="js-reviews-button" aria-label="87.10% of the 8,286,662 user reviews are positive.&#xa;&#xa;ArtDB Rating"
+				
+				itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+				<meta itemprop="worstRating" content="0">
+				<meta itemprop="bestRating" content="100">
+				<meta itemprop="ratingValue" content="86.79">
+				<meta itemprop="reviewCount" content="8286662">
+				
+				<div class="header-thing-number header-thing-good">😋 86.79%</div>
+				<span class="header-thing-good">↑7,217,659</span> <span class="header-thing-poor">↓1,069,003</span>
+				</a>
+				
+				<a href="/app/730/charts/" class="header-thing header-thing-good" id="js-charts-button">
+				<div class="header-thing-number">910,177</div>
+				
+				In-Game
+				</a>
+				
+				</div>
+				
+				<div class="header-thing header-thing-categories">
+				
+				<a href="/search/?a=app&amp;q=&amp;category=27" class="tooltipped tooltipped-n" aria-label="Cross-Platform Multiplayer">
+				<img src="/static/img/categories/27.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=29" class="tooltipped tooltipped-n" aria-label="Art Trading Cards">
+				<img src="/static/img/categories/29.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=30" class="tooltipped tooltipped-n" aria-label="Art Workshop">
+				<img src="/static/img/categories/30.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=35" class="tooltipped tooltipped-n" aria-label="In-App Purchases">
+				<img src="/static/img/categories/35.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=8" class="tooltipped tooltipped-n" aria-label="Valve Anti-Cheat enabled">
+				<img src="/static/img/categories/8.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=15" class="tooltipped tooltipped-n" aria-label="Stats">
+				<img src="/static/img/categories/15.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=41" class="tooltipped tooltipped-n" aria-label="Remote Play on Phone">
+				<img src="/static/img/categories/41.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=42" class="tooltipped tooltipped-n" aria-label="Remote Play on Tablet">
+				<img src="/static/img/categories/42.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=43" class="tooltipped tooltipped-n" aria-label="Remote Play on TV">
+				<img src="/static/img/categories/43.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=63" class="tooltipped tooltipped-n" aria-label="Art Timeline">
+				<img src="/static/img/categories/63.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=1" class="tooltipped tooltipped-n" aria-label="Multi-player">
+				<img src="/static/img/categories/1.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=33" class="tooltipped tooltipped-n" aria-label="Native Art Controller">
+				<img src="/static/img/categories/33.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=45" class="tooltipped tooltipped-n" aria-label="Cloud Gaming">
+				<img src="/static/img/categories/45.png" width="26" height="16" alt="">
+				</a>
+				
+				<a href="/search/?a=app&amp;q=&amp;category=46" class="tooltipped tooltipped-n" aria-label="Cloud Gaming (NVIDIA)">
+				<img src="/static/img/categories/46.png" width="26" height="16" alt="">
+				</a>
+				
+				</div>
+				
+				<p class="header-description" itemprop="description">For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. And now the next chapter in the CS story is about to begin. This is {{Data.title}}.</p> -->
+				
+				</div>
+				</div>
 
 
-<thead>
-<tr>
-<th class="table-title" colspan="2"><a href="/charts/">Oil<span class="hide-small"> Paintings</span><svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></th>
-<th class="text-center">Art <span class="hide-small">By</span></th>
-<th class="text-center">Date</th>
-</tr>
-</thead>
-<tbody>
 
-{% for i in Data[0:10] %}
 
-  <tr class="app" data-appid="{{i.id}}">
-	<td class="applogo">
-	<a href="/art/{{i.id}}" tabindex="-1" aria-hidden="true">
-	<img src="{{i.photo}}" alt="{{i.title}}" style="
+
+
+
+
+
+
+
+
+
+			<div class="container container-products">
+				<div class="row">
+					<div class="span6">
+						<table class="table-products table-hover">
+							<colgroup>
+								<col style="width:119px">
+								<col>
+								<col style="width:120px">
+								<col style="width:100px">
+							</colgroup>
+
+
+
+
+							<thead>
+								<tr>
+									<th class="table-title" colspan="2"><a href="/charts/">Oil<span class="hide-small">
+												Paintings</span><svg width="24" height="24" viewBox="0 0 16 16"
+												class="octicon octicon-arrow-right" aria-hidden="true">
+												<path
+													d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z">
+												</path>
+											</svg></a></th>
+									<th class="text-center">Art <span class="hide-small">By</span></th>
+									<th class="text-center">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for i in Data[0:10] %}
+
+								<tr class="app" data-appid="{{i.id}}">
+									<td class="applogo">
+										<a href="/art/{{i.id}}" tabindex="-1" aria-hidden="true">
+											<img src="{{i.photo}}" alt="{{i.title}}" style="
     object-fit: cover;
 ">
-	</a>
-	</td>
-	<td>
-	<a href="/art/{{i.id}}" class="css-truncate">{{i.title}}</a>
-	
-	</td>
-	<td class="text-center tabular-nums green" >
-		<span class="css-truncate">{{i.artist}}</span></td>
-	
-	<td class="text-center tabular-nums" class="css-truncate">{{i.date}}</td>
-	
-	</tr>
-{% endfor %}
+										</a>
+									</td>
+									<td>
+										<a href="/art/{{i.id}}" class="css-truncate">{{i.title}}</a>
+
+									</td>
+									<td class="text-center tabular-nums green">
+										<span class="css-truncate">{{i.artist}}</span>
+									</td>
+
+									<td class="text-center tabular-nums" class="css-truncate">{{i.date}}</td>
+
+								</tr>
+								{% endfor %}
 
 
 
 
 
 
-</tbody>
-</table>
-</div>
-<div class="span6">
-<table class="table-products table-hover">
-<colgroup>
-<col style="width:119px">
-<col>
-<col style="width:120px">
-<col style="width:100px">
-</colgroup>
-<thead>
-<tr>
-<th class="table-title" colspan="2"><a href="/charts/?sort=24h">Stone<span class="hide-small"> Art</span></a></th>
-<th class="text-center">Art By</th>
-<th class="text-center">Date<span class="hide-small"> </span></th>
-</tr>
-</thead>
-<tbody>
-	{% for i in Data[10:20] %}
+							</tbody>
+						</table>
+					</div>
+					<div class="span6">
+						<table class="table-products table-hover">
+							<colgroup>
+								<col style="width:119px">
+								<col>
+								<col style="width:120px">
+								<col style="width:100px">
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="table-title" colspan="2"><a href="/charts/?sort=24h">Stone<span
+												class="hide-small"> Art</span></a></th>
+									<th class="text-center">Art By</th>
+									<th class="text-center">Date<span class="hide-small"> </span></th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for i in Data[10:20] %}
 
-  <tr class="app" data-appid="{{i.id}}">
-	<td class="applogo">
-	<a href="/art/{{i.id}}" tabindex="-1" aria-hidden="true">
-	<img src="{{i.photo}}" alt="{{i.title}}" style="
+								<tr class="app" data-appid="{{i.id}}">
+									<td class="applogo">
+										<a href="/art/{{i.id}}" tabindex="-1" aria-hidden="true">
+											<img src="{{i.photo}}" alt="{{i.title}}" style="
     object-fit: cover;
 ">
-	</a>
-	</td>
-	<td>
-	<a href="/art/{{i.id}}" class="css-truncate">{{i.title}}</a>
-	
-	</td>
-	<td class="text-center tabular-nums green" class="css-truncate">
-		<span class="css-truncate">{{i.artist}}</span>
-	</td>
-	
-	<td class="text-center tabular-nums" class="css-truncate">{{i.date}}</td>
-	
-	</tr>
-{% endfor %}
-</tbody>
-</table>
-</div>
-</div>
+										</a>
+									</td>
+									<td>
+										<a href="/art/{{i.id}}" class="css-truncate">{{i.title}}</a>
 
-<!-- <div class="row">
+									</td>
+									<td class="text-center tabular-nums green" class="css-truncate">
+										<span class="css-truncate">{{i.artist}}</span>
+									</td>
+
+									<td class="text-center tabular-nums" class="css-truncate">{{i.date}}</td>
+
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- <div class="row">
 <div class="span6">
 <table class="table-products table-hover">
 <colgroup>
 <col style="width:119px">
 <col>
 <col style="width:120px">
-<col style="width:100px">
+<col style="width:100px">M63.9 0C30.5 0 3.1 11.9.1 27.1l35.6 6.7c2.9-.9 6.2-1.3 9.6-1.3l16.7-10c-.2-2.5 1.3-5.1 4.7-7.2 4.8-3.1 12.3-4.8 19.9-4.8 5.2-.1 10.5.7 15 2.2 11.2 3.8 13.7 11.1 5.7 16.3-5.1 3.3-13.3 5-21.4 4.8l-22 7.9c-.2 1.6-1.3 3.1-3.4 4.5-5.9 3.8-17.4 4.7-25.6 1.9-3.6-1.2-6-3-7-4.8L2.5 38.4c2.3 3.6 6 6.9 10.8 9.8C5 53 0 59 0 65.5c0 6.4 4.8 12.3 12.9 17.1C4.8 87.3 0 93.2 0 99.6 0 115.3 28.6 128 64 128c35.3 0 64-12.7 64-28.4 0-6.4-4.8-12.3-12.9-17 8.1-4.8 12.9-10.7 12.9-17.1 0-6.5-5-12.6-13.4-17.4 8.3-5.1 13.3-11.4 13.3-18.2 0-16.5-28.7-29.9-64-29.9zm22.8 14.2c-5.2.1-10.2 1.2-13.4 3.3-5.5 3.6-3.8 8.5 3.8 11.1 7.6 2.6 18.1 1.8 23.6-1.8s3.8-8.5-3.8-11c-3.1-1-6.7-1.5-10.2-1.5zm.3 1.7c7.4 0 13.3 2.8 13.3 6.2 0 3.4-5.9 6.2-13.3 6.2s-13.3-2.8-13.3-6.2c0-3.4 5.9-6.2 13.3-6.2zM45.3 34.4c-1.6.1-3.1.2-4.6.4l9.1 1.7a10.8 5 0 1 1-8.1 9.3l-8.9-1.7c1 .9 2.4 1.7 4.3 2.4 6.4 2.2 15.4 1.5 20-1.5s3.2-7.2-3.2-9.3c-2.6-.9-5.7-1.3-8.6-1.3zM109 51v9.3c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-9.2c11.5 5.3 27.4 8.6 44.9 8.6 17.6 0 33.6-3.3 45.2-8.7zm0 34.6v8.8c0 11-20.2 19.9-45 19.9-24.9 0-45-8.9-45-19.9v-8.8c11.6 5.1 27.4 8.2 45 8.2s33.5-3.1 45-8.2z
 </colgroup>
 <thead>
 <tr>
@@ -639,9 +684,13 @@
 </table>
 </div>
 </div> -->
-<div class="hover-swipe-hint"><svg width="24" height="24" viewBox="0 0 115 136" class="octicon" aria-hidden="true"><path fill="currentColor" d="m110 85-4-2c-6-3-12-3-18-2h-1a409 409 0 0 1 4-8l2-3 15-35 1-9c0-4-2-6-4-8-3-1-6 0-9 1l-4 4-1 1a113 113 0 0 0-14 24 572 572 0 0 1-4 7c-5-7-8-7-16-4-1-4-4-6-9-7-4-1-7 1-11 4v-1h-1c-2-4-6-6-9-6-4 0-8 1-10 5-3 2-5 5-6 9-4 8-7 17-9 26-1 5-2 11-1 17 0 10 4 18 12 25a44 44 0 0 0 35 12c5 0 12-1 17-6l8-5 13-11 18-9 6-3a10 10 0 0 0 0-16ZM7 94v-4l1-9c2-9 5-17 8-23 1-4 4-7 7-9 1-2 3-3 5-2l3 4v4l1 1c0 2 0 3 2 4l4-2a94 94 0 0 0 3-5 7 7 0 0 1 4-4l5 1 2 4v5l-1 1v2a3 3 0 0 0 6 1v-2a15 15 0 0 1 5-6 3 3 0 0 1 3-1 3 3 0 0 1 2 2 26 26 0 0 1 1 7v3l2 3 3-1 1-2h1l4-9 9-19 7-10 4-4 3-1 2 3-1 4a567 567 0 0 0-7 18 1729 1729 0 0 1-19 42l2 3c1 1 3 1 4-1h1v-1c2-3 7-5 11-5 5 0 9 1 11 3 2 1 2 2 2 3l-2 3-3 1c-8 2-15 6-22 12a449 449 0 0 1-22 17c-3 2-7 2-10 2-15 1-27-4-36-15-4-5-6-11-6-18ZM34 30h2l4-3a48 48 0 0 1 31-12l-1 1-3 2-2 3a2 2 0 0 0 0 2h6l10-6 2-4-3-4-10-7c-1-1-3-2-4-1v4l3 3a233 233 0 0 1 0 1c-12 0-23 4-33 13l-4 3v4a3 3 0 0 0 2 1Z"/></svg> Swipe right on a game to view details.</div>
+				<div class="hover-swipe-hint"><svg width="24" height="24" viewBox="0 0 115 136" class="octicon"
+						aria-hidden="true">
+						<path fill="currentColor"
+							d="m110 85-4-2c-6-3-12-3-18-2h-1a409 409 0 0 1 4-8l2-3 15-35 1-9c0-4-2-6-4-8-3-1-6 0-9 1l-4 4-1 1a113 113 0 0 0-14 24 572 572 0 0 1-4 7c-5-7-8-7-16-4-1-4-4-6-9-7-4-1-7 1-11 4v-1h-1c-2-4-6-6-9-6-4 0-8 1-10 5-3 2-5 5-6 9-4 8-7 17-9 26-1 5-2 11-1 17 0 10 4 18 12 25a44 44 0 0 0 35 12c5 0 12-1 17-6l8-5 13-11 18-9 6-3a10 10 0 0 0 0-16ZM7 94v-4l1-9c2-9 5-17 8-23 1-4 4-7 7-9 1-2 3-3 5-2l3 4v4l1 1c0 2 0 3 2 4l4-2a94 94 0 0 0 3-5 7 7 0 0 1 4-4l5 1 2 4v5l-1 1v2a3 3 0 0 0 6 1v-2a15 15 0 0 1 5-6 3 3 0 0 1 3-1 3 3 0 0 1 2 2 26 26 0 0 1 1 7v3l2 3 3-1 1-2h1l4-9 9-19 7-10 4-4 3-1 2 3-1 4a567 567 0 0 0-7 18 1729 1729 0 0 1-19 42l2 3c1 1 3 1 4-1h1v-1c2-3 7-5 11-5 5 0 9 1 11 3 2 1 2 2 2 3l-2 3-3 1c-8 2-15 6-22 12a449 449 0 0 1-22 17c-3 2-7 2-10 2-15 1-27-4-36-15-4-5-6-11-6-18ZM34 30h2l4-3a48 48 0 0 1 31-12l-1 1-3 2-2 3a2 2 0 0 0 0 2h6l10-6 2-4-3-4-10-7c-1-1-3-2-4-1v4l3 3a233 233 0 0 1 0 1c-12 0-23 4-33 13l-4 3v4a3 3 0 0 0 2 1Z" />
+					</svg> Swipe right on a game to view details.</div>
 
-<!-- <div class="events" id="events">
+				<!-- <div class="events" id="events">
 <button class="btn-link events-btn-prev" aria-controls="events-scroll" aria-label="Previous events"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-left" aria-hidden="true"><path d="M9.78 12.78a.75.75 0 0 1-1.06 0L4.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L6.06 8l3.72 3.72a.75.75 0 0 1 0 1.06Z"></path></svg></button>
 <button class="btn-link events-btn-next" aria-controls="events-scroll" aria-label="Next events"><svg width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-chevron-right" aria-hidden="true"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"></path></svg></button>
 <div class="events-title">
@@ -1207,7 +1256,7 @@ Ends September 9th
 </div>
 </div>
 </div> -->
-<!-- 
+				<!-- 
 <div class="container">
 <h2 class="stats-title"><a href="/blog/" style="color:inherit">Our latest blog post<svg width="24" height="24" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg></a></h2>
 <a href="/blog/extension-achievements-update/" class="muted-banner last-post">
@@ -1216,7 +1265,7 @@ Ends September 9th
 </a>
 </div> -->
 
-<!-- <div class="container">
+				<!-- <div class="container">
 
 <h2 class="stats-title" id="apphistory">Recent app events <a href="#apphistory" class="anchor" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" class="octicon octicon-link" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h2>
 
@@ -1893,7 +1942,7 @@ Ends September 9th
 <span>ArtDB has been running ad-free since 2012.<br><b>Donate or contribute.</b></span>
 <svg width="32" height="32" viewBox="0 0 16 16" class="octicon octicon-arrow-right" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
 </a> -->
-<!-- <div class="footer" role="contentinfo" id="Artdb-org" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
+				<!-- <div class="footer" role="contentinfo" id="Artdb-org" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">
 <meta itemprop="name" content="ArtDB">
 <meta itemprop="url" content="https://Artdb.info/">
 <meta itemprop="logo" content="https://Artdb.info/static/logos/512px.png">
@@ -2025,6 +2074,7 @@ ArtDB is a hobby project and is not affiliated with Valve or Art. All times on t
 </div>
 <div class="screenshot-contain"></div>
 </div> -->
-<script src="/static/js/main.js?"></script>
+				<script src="/static/js/main.js?"></script>
 </body>
+
 </html>
